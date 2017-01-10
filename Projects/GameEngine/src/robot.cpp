@@ -6,11 +6,8 @@
 #include "robot.h"
 
 // Constructor
-Robot::Robot(const float kfXPos, const float kfYPos, const float kfZPos, const float kfRotation)
+Robot::Robot()
 {
-	m_position = glm::vec3(kfXPos, kfYPos, kfZPos);
-	m_rotation = kfRotation;
-
 	m_armAngles[LEFT] = 0.0;
 	m_armAngles[RIGHT] = 0.0;
 	m_legAngles[LEFT] = 0.0;
@@ -26,7 +23,7 @@ Robot::Robot(const float kfXPos, const float kfYPos, const float kfZPos, const f
 }
 
 // Draw methods
-void Robot::drawCube(float xPos, float yPos, float zPos)
+void Robot::drawCube(const float kfXPos, const float kfYPos, const float kfZPos)
 {
 	//glPushMatrix();
 	//	glTranslatef(xPos, yPos, zPos);
@@ -58,7 +55,7 @@ void Robot::drawCube(float xPos, float yPos, float zPos)
 	//	glEnd();
 	//glPopMatrix();
 }
-void Robot::drawArm(float xPos, float yPos, float zPos)
+void Robot::drawArm(const float kfXPos, const float kfYPos, const float kfZPos)
 {
 	//glPushMatrix();
 	//	glColor3f(1.0f, 0.0f, 0.0f);	// red
@@ -67,7 +64,7 @@ void Robot::drawArm(float xPos, float yPos, float zPos)
 	//	DrawCube(0.0f, 0.0f, 0.0f);
 	//glPopMatrix();
 }
-void Robot::drawHead(float xPos, float yPos, float zPos)
+void Robot::drawHead(const float kfXPos, const float kfYPos, const float kfZPos)
 {
 	//glPushMatrix();
 	//	glColor3f(1.0f, 1.0f, 1.0f);	// white
@@ -76,7 +73,7 @@ void Robot::drawHead(float xPos, float yPos, float zPos)
 	//	DrawCube(0.0f, 0.0f, 0.0f);
 	//glPopMatrix();
 }
-void Robot::drawTorso(float xPos, float yPos, float zPos)
+void Robot::drawTorso(const float kfXPos, const float kfYPos, const float kfZPos)
 {
 	//glPushMatrix();
 	//	glColor3f(0.0f, 0.0f, 1.0f);	// blue
@@ -85,7 +82,7 @@ void Robot::drawTorso(float xPos, float yPos, float zPos)
 	//	DrawCube(0.0f, 0.0f, 0.0f);
 	//glPopMatrix();
 }
-void Robot::drawLeg(float xPos, float yPos, float zPos)
+void Robot::drawLeg(const float kfXPos, const float kfYPos, const float kfZPos)
 {
 	//glPushMatrix();
 	//	glTranslatef(xPos, yPos, zPos);
@@ -101,7 +98,7 @@ void Robot::drawLeg(float xPos, float yPos, float zPos)
 	//	DrawCube(0.0f, 0.0f, 0.0f);
 	//glPopMatrix();
 }
-void Robot::drawFoot(float xPos, float yPos, float zPos)
+void Robot::drawFoot(const float kfXPos, const float kfYPos, const float kfZPos)
 {
 	//glPushMatrix();
 	//	glColor3f(1.0f, 1.0f, 1.0f);
@@ -110,7 +107,7 @@ void Robot::drawFoot(float xPos, float yPos, float zPos)
 	//	DrawCube(0.0f, 0.0f, 0.0f);
 	//glPopMatrix();
 }
-void Robot::drawRobot()
+void Robot::draw(const float kfXPos, const float kfYPos, const float kfZPos, const float kfRotation)
 {
 	//glPushMatrix();
 	//	glTranslatef(m_position.x, m_position.y, m_position.z);	// draw robot at desired coordinates
@@ -149,17 +146,6 @@ void Robot::drawRobot()
 	//	glPopMatrix();
 	//
 	//glPopMatrix();	// pop back to original coordinate system
-}
-
-// Control methods
-void Robot::moveForward(const float kfDist)
-{
-	// Defines forward Normal vector
-	glm::vec3 forwardNormal = glm::vec3(cosf(glm::radians(m_rotation - 90)), 0, -sinf(glm::radians(m_rotation - 90)));
-
-	// Applies distance split between x/z
-	m_position.x += -kfDist * forwardNormal.x;
-	m_position.z += -kfDist * forwardNormal.z;
 }
 
 // Update method
