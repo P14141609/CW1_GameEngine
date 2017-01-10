@@ -8,6 +8,7 @@
 */
 
 // Imports
+#include "scene.h"
 #include <iostream>
 // OpenGL
 #include "gl_core_4_3.hpp"
@@ -48,18 +49,21 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 	glfwMakeContextCurrent(g_window);
-
+	
 	// Key handling
 	glfwSetKeyCallback(g_window, onKeyEvent);
 	
+	// Defines scene
+	Scene scene = Scene();
+
 	// Main loop
 	while (!glfwWindowShouldClose(g_window) && !glfwGetKey(g_window, GLFW_KEY_ESCAPE)) 
 	{
 		// Update
-		// TODO
+		scene.update((float)glfwGetTime());
 		
 		// Render
-		// TODO
+		scene.render();
 
 		// GLFW processes
 		glfwSwapBuffers(g_window);
