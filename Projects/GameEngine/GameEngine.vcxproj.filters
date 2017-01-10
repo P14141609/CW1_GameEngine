@@ -2,28 +2,25 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+      <UniqueIdentifier>{75fa1743-f3c5-4507-a575-cbbbda6aef68}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+      <UniqueIdentifier>{7f066c0c-b054-4b03-b6bc-12c23d94f60c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Source Files\System">
-      <UniqueIdentifier>{758d4680-b5cd-430e-8bf6-3bf1babc88b3}</UniqueIdentifier>
+      <UniqueIdentifier>{ecefd71d-7dad-425a-8254-8317b1e3e1a5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\System">
-      <UniqueIdentifier>{fabcd501-1531-427f-99e6-4beda3bb0354}</UniqueIdentifier>
+      <UniqueIdentifier>{05cd3624-59c4-44ad-9559-98a1f880dd1d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Scene">
-      <UniqueIdentifier>{b2e49206-86d5-4abe-9b43-4c71ca50657a}</UniqueIdentifier>
+    <Filter Include="Header Files\Player">
+      <UniqueIdentifier>{53fe99af-ccbc-4461-b8df-470c6b5323ac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Scene">
-      <UniqueIdentifier>{3d8469cf-9a79-4256-8faa-347c62ee82c1}</UniqueIdentifier>
+    <Filter Include="Source Files\System">
+      <UniqueIdentifier>{96dba168-1fe9-49e9-a415-0f55fce78102}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player">
+      <UniqueIdentifier>{27f0d472-6309-49a0-88a8-aed603c84253}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,6 +33,12 @@
     <ClCompile Include="src\model.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="src\player.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="src\robot.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\scene.h">
@@ -43,6 +46,12 @@
     </ClInclude>
     <ClInclude Include="include\model.h">
       <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="include\robot.h">
+      <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="include\player.h">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
