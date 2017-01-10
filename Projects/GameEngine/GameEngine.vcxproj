@@ -100,12 +100,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClCompile Include="src\model.cpp" />
+    <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\robot.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\model.h" />
+    <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\player.h" />
     <ClInclude Include="include\robot.h" />
   </ItemGroup>
