@@ -2,8 +2,6 @@
 #define ROBOT_H
 
 #include "glm.hpp"
-#include <gl/gl.h>
-#include <gl/glu.h>
 
 // constants for arm and leg movement states
 const char BACKWARD_STATE = 0;
