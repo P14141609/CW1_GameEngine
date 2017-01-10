@@ -2,7 +2,7 @@
 #define PLAYER_H
 
 // Imports
-// TODO
+#include "robot.h"
 
 /////////////////////////////////////////////////
 ///
@@ -12,6 +12,7 @@
 class Player
 {
 private:
+	Robot robot;
 
 protected:
 

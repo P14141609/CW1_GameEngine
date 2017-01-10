@@ -107,10 +107,15 @@
     <ClInclude Include="include\scene.h" />
 =======
     <ClCompile Include="src\player.cpp" />
+    <ClCompile Include="src\robot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\player.h" />
+<<<<<<< HEAD
 >>>>>>> Added empty Player class
+=======
+    <ClInclude Include="include\robot.h" />
+>>>>>>> Added the Robot class from my previous work on the RobotExample project
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

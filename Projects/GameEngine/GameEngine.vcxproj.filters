@@ -50,11 +50,17 @@
     <ClCompile Include="src\player.cpp">
       <Filter>Source Files\Player</Filter>
     </ClCompile>
+    <ClCompile Include="src\robot.cpp">
+      <Filter>Source Files\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\player.h">
       <Filter>Header Files\Player</Filter>
 >>>>>>> Added empty Player class
+    </ClInclude>
+    <ClInclude Include="include\robot.h">
+      <Filter>Header Files\Player</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
