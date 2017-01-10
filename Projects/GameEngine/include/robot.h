@@ -17,41 +17,41 @@ class Robot
 {
 private:
 
-	char legStates[2];
-	char armStates[2];
+	char m_legStates[2];
+	char m_armStates[2];
 
-	float legAngles[2];
-	float armAngles[2];
+	float m_legAngles[2];
+	float m_armAngles[2];
 
 	// draws a unit cube
-	void DrawCube(float xPos, float yPos, float zPos);
+	void drawCube(const float kfXPos, float kfYPos, float kfZPos);
 
 	// methods to draw the parts of the robot
-	void DrawArm(float xPos, float yPos, float zPos);
-	void DrawHead(float xPos, float yPos, float zPos);
-	void DrawTorso(float xPos, float yPos, float zPos);
-	void DrawLeg(float xPos, float yPos, float zPos);
-	void DrawFoot(float xPos, float yPos, float zPos);
+	void drawArm(const float kfXPos, float kfYPos, float kfZPos);
+	void drawHead(const float kfXPos, float kfYPos, float kfZPos);
+	void drawTorso(const float kfXPos, float kfYPos, float kfZPos);
+	void drawLeg(const float kfXPos, float kfYPos, float kfZPos);
+	void drawFoot(const float kfXPos, float kfYPos, float kfZPos);
 
 public:
 
-	Robot(float xPos, float yPos, float zPos, float rotation);
+	Robot(const float kfXPos, const float kfYPos, const float kfZPos, const float kfRotation);
 	~Robot() {};
 
 	glm::vec3 m_position;
 	float m_rotation;
 
-	bool armsMoving;
-	bool legsMoving;
+	bool m_armsMoving;
+	bool m_legsMoving;
 
 	// draws the entire robot
-	void DrawRobot();
+	void drawRobot();
 
 	// moves the robot forwards by distance
-	void MoveForward(float dist);
+	void moveForward(const float kfDist);
 
 	// updates the robot data
-	void Update(float dt);
+	void update(const float kfElapsedTime);
 };
 
 #endif

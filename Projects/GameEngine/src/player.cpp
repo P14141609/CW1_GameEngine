@@ -14,11 +14,11 @@ Player::Player()
 // Void: Called to update the player model
 void Player::update(float fElapsedTime)
 {
-	// TODO
+	m_robot->Update(fElapsedTime);
 }
 
 // Void: Called to render the player model
 void Player::render()
 {
-	// TODO
+	m_robot->DrawRobot();
 }

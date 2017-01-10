@@ -3,6 +3,7 @@
 
 // Imports
 #include "robot.h"
+#include <memory>
 
 /////////////////////////////////////////////////
 ///
@@ -12,7 +13,7 @@
 class Player
 {
 private:
-	Robot robot;
+	std::unique_ptr<Robot> m_robot; //!< The Robot player character
 
 protected:
 
