@@ -99,6 +99,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\model.cpp" />
     <ClCompile Include="src\scene.cpp" />
@@ -106,6 +107,7 @@
     <ClCompile Include="src\robot.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\camera.h" />
     <ClInclude Include="include\model.h" />
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\player.h" />
