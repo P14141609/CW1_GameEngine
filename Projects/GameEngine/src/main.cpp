@@ -14,7 +14,7 @@
 #include <GLFW/glfw3.h>
 
 // Global Variables
-GLFWwindow *g_window; // Declares GLFWwindow for display
+GLFWwindow *g_window; //!< GLFWwindow for display
 
 //!< Called upon key event
 static void onKeyEvent(GLFWwindow* window, int key, int cancode, int action, int mods)
