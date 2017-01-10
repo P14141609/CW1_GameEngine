@@ -35,10 +35,10 @@ public:
 
 	/////////////////////////////////////////////////
 	///
-	/// \brief Draws the Model
+	/// \brief Called to render the Model
 	///
 	///////////////////////////////////////////////// 
-	void draw();
+	void render();
 };
 
 #endif

@@ -17,8 +17,8 @@ void Model::loadFromObj(const std::string ksFilePath)
 	// TODO
 }
 
-// Void: Draws the Model
-void Model::draw()
+// Void: Called to render the Model
+void Model::render()
 {
 	// TODO
 }
