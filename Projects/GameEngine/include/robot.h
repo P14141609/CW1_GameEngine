@@ -22,14 +22,14 @@ private:
 	float m_armAngles[2];
 
 	// draws a unit cube
-	void drawCube(const float kfXPos, const float kfYPos, const float kfZPos);
+	void drawCube(const glm::vec3 kPosition);
 
 	// methods to draw the parts of the robot
-	void drawArm(const float kfXPos, const float kfYPos, const float kfZPos);
-	void drawHead(const float kfXPos, const float kfYPos, const float kfZPos);
-	void drawTorso(const float kfXPos, const float kfYPos, const float kfZPos);
-	void drawLeg(const float kfXPos, const float kfYPos, const float kfZPos);
-	void drawFoot(const float kfXPos, const float kfYPos, const float kfZPos);
+	void drawArm(const glm::vec3 kPosition);
+	void drawHead(const glm::vec3 kPosition);
+	void drawTorso(const glm::vec3 kPosition);
+	void drawLeg(const glm::vec3 kPosition);
+	void drawFoot(const glm::vec3 kPosition);
 
 public:
 
@@ -40,7 +40,7 @@ public:
 	bool m_legsMoving;
 
 	// draws the entire robot
-	void draw(const float kfXPos, const float kfYPos, const float kfZPos, const float kfRotation);
+	void draw(const glm::vec3 kPosition, const float kfRotation);
 
 	// updates the robot data
 	void update(const float kfElapsedTime);
