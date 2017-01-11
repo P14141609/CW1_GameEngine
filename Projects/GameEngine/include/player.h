@@ -44,15 +44,6 @@ public:
 
 	/////////////////////////////////////////////////
 	///
-	/// \brief Processes keyboard input
-	///
-	/// \param kiKey The pressed key
-	///
-	///////////////////////////////////////////////// 
-	void processKeyInput(const int kiKey);
-
-	/////////////////////////////////////////////////
-	///
 	/// \brief Moves the Player forward by a given distance
 	///
 	/// \param kfDist The distance to move the Player
