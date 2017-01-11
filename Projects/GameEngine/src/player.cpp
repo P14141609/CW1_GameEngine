@@ -21,8 +21,8 @@ void Player::processKeyInput(const int kiKey)
 		case GLFW_KEY_SPACE:
 		{
 			// Inverts the current bool values for limb movement
-			m_pRobot->m_armsMoving = !m_pRobot->m_armsMoving;
-			m_pRobot->m_legsMoving = !m_pRobot->m_legsMoving;
+			m_pRobot->m_bArmsMoving = !m_pRobot->m_bArmsMoving;
+			m_pRobot->m_bLegsMoving = !m_pRobot->m_bLegsMoving;
 		} break;
 
 		// If input is GLFW_KEY_UP
