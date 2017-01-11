@@ -22,6 +22,6 @@ void Scene::render()
 {
 	m_player.render();
 
-	for (std::shared_ptr<Model> model : m_models) 
+	for (std::shared_ptr<Model> model : m_pModels) 
 		model->render();
 }

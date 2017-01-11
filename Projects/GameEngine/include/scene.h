@@ -17,10 +17,12 @@ class Scene
 {
 private:
 	Player m_player = Player(0.0f, 0.0f, 0.0f, 0.0f); //!< Player member for character handling
-	Camera m_camera = Camera(); //!< Camera member for view handling
 
-	std::vector<std::shared_ptr<Model>> m_models; //!< Vector of Model pointers to associated Models in the Scene
+	std::vector<std::shared_ptr<Camera>> m_pCameras; //!< Vector of Camera pointers for Cameras within the Scene
+	std::vector<std::shared_ptr<Model>> m_pModels; //!< Vector of Model pointers for Models within the Scene
 	
+	std::shared_ptr<Camera> m_pActiveCamera; //!< Pointer to the Camera currently being used
+
 protected:
 
 public:
