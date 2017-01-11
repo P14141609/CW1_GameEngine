@@ -14,12 +14,12 @@ Robot::Robot()
 	m_fLegAngles[RIGHT] = 0.0;
 
 	m_bArmsMoving = true;
-	m_cArmStates[LEFT] = FORWARD_STATE;
-	m_cArmStates[RIGHT] = BACKWARD_STATE;
+	m_armStates[LEFT] = FORWARD;
+	m_armStates[RIGHT] = BACKWARD;
 
 	m_bLegsMoving = true;
-	m_cLegStates[LEFT] = FORWARD_STATE;
-	m_cLegStates[RIGHT] = BACKWARD_STATE;
+	m_legStates[LEFT] = FORWARD;
+	m_legStates[RIGHT] = BACKWARD;
 }
 
 // Draw methods
@@ -157,31 +157,31 @@ void Robot::update(const float kfElapsedTime)
 		if (m_bArmsMoving)
 		{
 			// arms
-			if (m_cArmStates[side] == FORWARD_STATE)
+			if (m_armStates[side] == FORWARD)
 				m_fArmAngles[side] += 20.0f * kfElapsedTime;
 			else
 				m_fArmAngles[side] -= 20.0f * kfElapsedTime;
 
 			// change state if exceeding angles
 			if (m_fArmAngles[side] >= 15.0f)
-				m_cArmStates[side] = BACKWARD_STATE;
+				m_armStates[side] = BACKWARD;
 			else if (m_fArmAngles[side] <= -15.0f)
-				m_cArmStates[side] = FORWARD_STATE;
+				m_armStates[side] = FORWARD;
 		}
 
 		if (m_bLegsMoving)
 		{
 			// legs
-			if (m_cLegStates[side] == FORWARD_STATE)
+			if (m_legStates[side] == FORWARD)
 				m_fLegAngles[side] += 20.0f * kfElapsedTime;
 			else
 				m_fLegAngles[side] -= 20.0f * kfElapsedTime;
 
 			// change state if exceeding angles
 			if (m_fLegAngles[side] >= 15.0f)
-				m_cLegStates[side] = BACKWARD_STATE;
+				m_legStates[side] = BACKWARD;
 			else if (m_fLegAngles[side] <= -15.0f)
-				m_cLegStates[side] = FORWARD_STATE;
+				m_legStates[side] = FORWARD;
 		}
 	}
 }
