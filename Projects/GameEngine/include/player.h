@@ -4,6 +4,7 @@
 // Imports
 #include "robot.h"
 #include <memory>
+#include <GLFW\glfw3.h>
 
 /////////////////////////////////////////////////
 ///
@@ -13,10 +14,10 @@
 class Player
 {
 private:
-	std::unique_ptr<Robot> m_robot; //!< The Robot player character
+	std::unique_ptr<Robot> m_pRobot; //!< The Robot player character
 
-	glm::vec3 m_position;
-	float m_rotation;
+	glm::vec3 m_position; //!< Player position vector
+	float m_rotation; //!< Player rotation angle
 
 protected:
 
@@ -28,6 +29,15 @@ public:
 	///
 	///////////////////////////////////////////////// 
 	Player(const float kfXPos, const float kfYPos, const float kfZPos, const float kfRotation);
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Processes keyboard input
+	///
+	/// \param kiKey The pressed key
+	///
+	///////////////////////////////////////////////// 
+	void processKeyInput(const int kiKey);
 
 	/////////////////////////////////////////////////
 	///
