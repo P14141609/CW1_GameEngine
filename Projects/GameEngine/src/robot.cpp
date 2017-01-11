@@ -8,18 +8,18 @@
 // Constructor
 Robot::Robot()
 {
-	m_armAngles[LEFT] = 0.0;
-	m_armAngles[RIGHT] = 0.0;
-	m_legAngles[LEFT] = 0.0;
-	m_legAngles[RIGHT] = 0.0;
+	m_fArmAngles[LEFT] = 0.0;
+	m_fArmAngles[RIGHT] = 0.0;
+	m_fLegAngles[LEFT] = 0.0;
+	m_fLegAngles[RIGHT] = 0.0;
 
-	m_armsMoving = true;
-	m_armStates[LEFT] = FORWARD_STATE;
-	m_armStates[RIGHT] = BACKWARD_STATE;
+	m_bArmsMoving = true;
+	m_cArmStates[LEFT] = FORWARD_STATE;
+	m_cArmStates[RIGHT] = BACKWARD_STATE;
 
-	m_legsMoving = true;
-	m_legStates[LEFT] = FORWARD_STATE;
-	m_legStates[RIGHT] = BACKWARD_STATE;
+	m_bLegsMoving = true;
+	m_cLegStates[LEFT] = FORWARD_STATE;
+	m_cLegStates[RIGHT] = BACKWARD_STATE;
 }
 
 // Draw methods
@@ -154,34 +154,34 @@ void Robot::update(const float kfElapsedTime)
 	// if leg is moving forward, increase angle, else decrease angle
 	for (char side = 0; side < 2; side++)
 	{
-		if (m_armsMoving)
+		if (m_bArmsMoving)
 		{
 			// arms
-			if (m_armStates[side] == FORWARD_STATE)
-				m_armAngles[side] += 20.0f * kfElapsedTime;
+			if (m_cArmStates[side] == FORWARD_STATE)
+				m_fArmAngles[side] += 20.0f * kfElapsedTime;
 			else
-				m_armAngles[side] -= 20.0f * kfElapsedTime;
+				m_fArmAngles[side] -= 20.0f * kfElapsedTime;
 
 			// change state if exceeding angles
-			if (m_armAngles[side] >= 15.0f)
-				m_armStates[side] = BACKWARD_STATE;
-			else if (m_armAngles[side] <= -15.0f)
-				m_armStates[side] = FORWARD_STATE;
+			if (m_fArmAngles[side] >= 15.0f)
+				m_cArmStates[side] = BACKWARD_STATE;
+			else if (m_fArmAngles[side] <= -15.0f)
+				m_cArmStates[side] = FORWARD_STATE;
 		}
 
-		if (m_legsMoving)
+		if (m_bLegsMoving)
 		{
 			// legs
-			if (m_legStates[side] == FORWARD_STATE)
-				m_legAngles[side] += 20.0f * kfElapsedTime;
+			if (m_cLegStates[side] == FORWARD_STATE)
+				m_fLegAngles[side] += 20.0f * kfElapsedTime;
 			else
-				m_legAngles[side] -= 20.0f * kfElapsedTime;
+				m_fLegAngles[side] -= 20.0f * kfElapsedTime;
 
 			// change state if exceeding angles
-			if (m_legAngles[side] >= 15.0f)
-				m_legStates[side] = BACKWARD_STATE;
-			else if (m_legAngles[side] <= -15.0f)
-				m_legStates[side] = FORWARD_STATE;
+			if (m_fLegAngles[side] >= 15.0f)
+				m_cLegStates[side] = BACKWARD_STATE;
+			else if (m_fLegAngles[side] <= -15.0f)
+				m_cLegStates[side] = FORWARD_STATE;
 		}
 	}
 }

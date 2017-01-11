@@ -15,11 +15,11 @@ class Robot
 {
 private:
 
-	char m_legStates[2];
-	char m_armStates[2];
+	char m_cLegStates[2];
+	char m_cArmStates[2];
 
-	float m_legAngles[2];
-	float m_armAngles[2];
+	float m_fLegAngles[2];
+	float m_fArmAngles[2];
 
 	// draws a unit cube
 	void drawCube(const glm::vec3 kPosition);
@@ -36,8 +36,8 @@ public:
 	Robot();
 	~Robot() {};
 
-	bool m_armsMoving;
-	bool m_legsMoving;
+	bool m_bArmsMoving;
+	bool m_bLegsMoving;
 
 	// draws the entire robot
 	void draw(const glm::vec3 kPosition, const float kfRotation);
