@@ -27,8 +27,11 @@ public:
 	///
 	/// \brief Constructor
 	///
+	/// \param kPosition Vector for Player position
+	/// \param kfRotation Float for Player rotation angle
+	///
 	///////////////////////////////////////////////// 
-	Player(const float kfXPos, const float kfYPos, const float kfZPos, const float kfRotation);
+	Player(const glm::vec3 kPosition, const float kfRotation);
 
 	/////////////////////////////////////////////////
 	///

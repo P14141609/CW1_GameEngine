@@ -6,9 +6,9 @@
 #include "player.h"
 
 // Constructor
-Player::Player(const float kfXPos, const float kfYPos, const float kfZPos, const float kfRotation)
+Player::Player(const glm::vec3 kPosition, const float kfRotation)
 {
-	m_position = glm::vec3(kfXPos, kfYPos, kfZPos);
+	m_position = kPosition;
 	m_rotation = kfRotation;
 }
 
@@ -68,11 +68,11 @@ void Player::moveForward(const float kfDist)
 // Void: Called to update the Player model
 void Player::update(const float kfElapsedTime)
 {
-	m_robot->update(kfElapsedTime);
+	m_pRobot->update(kfElapsedTime);
 }
 
 // Void: Called to render the Player model
 void Player::render()
 {
-	m_robot->draw(m_position.x, m_position.y, m_position.z, m_rotation);
+	m_pRobot->draw(m_position, m_rotation);
 }
