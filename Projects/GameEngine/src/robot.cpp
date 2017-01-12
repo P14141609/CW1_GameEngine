@@ -8,82 +8,237 @@
 // Constructor
 Robot::Robot()
 {
-	m_armAngles[LEFT] = 0.0;
-	m_armAngles[RIGHT] = 0.0;
-	m_legAngles[LEFT] = 0.0;
-	m_legAngles[RIGHT] = 0.0;
+	m_fArmAngles[LEFT] = 0.0;
+	m_fArmAngles[RIGHT] = 0.0;
+	m_fLegAngles[LEFT] = 0.0;
+	m_fLegAngles[RIGHT] = 0.0;
 
-	m_armsMoving = true;
-	m_armStates[LEFT] = FORWARD_STATE;
-	m_armStates[RIGHT] = BACKWARD_STATE;
+	m_bArmsMoving = true;
+	m_armStates[LEFT] = FORWARD;
+	m_armStates[RIGHT] = BACKWARD;
 
-	m_legsMoving = true;
-	m_legStates[LEFT] = FORWARD_STATE;
-	m_legStates[RIGHT] = BACKWARD_STATE;
+	m_bLegsMoving = true;
+	m_legStates[LEFT] = FORWARD;
+	m_legStates[RIGHT] = BACKWARD;
+
+	// GENERATE UNIT CUBE
+	float positionData[] =
+	{
+		 1.0f,  1.0f,  1.0f,	// 0
+		-1.0f,  1.0f,  1.0f,	// 1
+		 1.0f,  1.0f, -1.0f,	// 2
+		-1.0f,  1.0f, -1.0f,	// 3
+
+		 1.0f, -1.0f,  1.0f,	// 4
+		-1.0f, -1.0f,  1.0f,	// 5
+		 1.0f, -1.0f, -1.0f,	// 6
+		-1.0f, -1.0f, -1.0f		// 7
+	};
+
+	GLuint indexData[] =
+	{
+		1, 0, 2,
+		1, 3, 2,
+
+		1, 0, 4,
+		1, 5, 4,
+
+		2, 0, 4,
+		2, 6, 4,
+
+		3, 2, 6,
+		3, 7, 6,
+
+		1, 3, 7,
+		1, 5, 7,
+
+		5, 4, 6,
+		5, 7, 6
+	};
+
+	m_sizeOfIndices = sizeof(indexData);
+
+	// Create and populate the buffer objects using separate buffers
+	gl::GenBuffers(2, m_vboHandles);
+	GLuint positionBufferHandle = m_vboHandles[0];
+	GLuint indexBufferHandle = m_vboHandles[1];
+
+	// Create and set-up the vertex array object
+	gl::GenVertexArrays(1, &m_vaoHandle);
+	gl::BindVertexArray(m_vaoHandle);
+
+	gl::BindBuffer(gl::ARRAY_BUFFER, positionBufferHandle);
+	gl::BufferData(gl::ARRAY_BUFFER, sizeof(positionData), positionData, gl::STATIC_DRAW);
+
+	gl::BindBuffer(gl::ELEMENT_ARRAY_BUFFER, indexBufferHandle);
+	gl::BufferData(gl::ELEMENT_ARRAY_BUFFER, m_sizeOfIndices, indexData, gl::STATIC_DRAW);
+
+	gl::EnableVertexAttribArray(0);  // Vertex position
+
+	gl::BindBuffer(gl::ARRAY_BUFFER, positionBufferHandle);
+	gl::VertexAttribPointer(0, 3, gl::FLOAT, FALSE, 0, (GLubyte *)NULL);
 }
 
 // Draw methods
-void Robot::drawCube(const float kfXPos, const float kfYPos, const float kfZPos)
+void Robot::drawCube(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel)
 {
-	//glPushMatrix();
-	//	glTranslatef(xPos, yPos, zPos);
-	//	glBegin(GL_POLYGON);
-	//		glVertex3f(0.0f, 0.0f, 0.0f);	// top face
-	//		glVertex3f(0.0f, 0.0f, -1.0f);
-	//		glVertex3f(-1.0f, 0.0f, -1.0f);
-	//		glVertex3f(-1.0f, 0.0f, 0.0f);
-	//		glVertex3f(0.0f, 0.0f, 0.0f);	// front face
-	//		glVertex3f(-1.0f, 0.0f, 0.0f);
-	//		glVertex3f(-1.0f, -1.0f, 0.0f);
-	//		glVertex3f(0.0f, -1.0f, 0.0f);
-	//		glVertex3f(0.0f, 0.0f, 0.0f);	// right face
-	//		glVertex3f(0.0f, -1.0f, 0.0f);
-	//		glVertex3f(0.0f, -1.0f, -1.0f);
-	//		glVertex3f(0.0f, 0.0f, -1.0f);
-	//		glVertex3f(-1.0f, 0.0f, 0.0f);	// left face
-	//		glVertex3f(-1.0f, 0.0f, -1.0f);
-	//		glVertex3f(-1.0f, -1.0f, -1.0f);
-	//		glVertex3f(-1.0f, -1.0f, 0.0f);
-	//		glVertex3f(0.0f, 0.0f, 0.0f);	// bottom face
-	//		glVertex3f(0.0f, -1.0f, -1.0f);
-	//		glVertex3f(-1.0f, -1.0f, -1.0f);
-	//		glVertex3f(-1.0f, -1.0f, 0.0f);
-	//		glVertex3f(0.0f, 0.0f, 0.0f);	// back face
-	//		glVertex3f(-1.0f, 0.0f, -1.0f);
-	//		glVertex3f(-1.0f, -1.0f, -1.0f);
-	//		glVertex3f(0.0f, -1.0f, -1.0f);
-	//	glEnd();
-	//glPopMatrix();
+	// Gets the location ID of the non-uniform variable in the shader
+	GLint posID = gl::GetAttribLocation(kCamera->getShaderHandle(), "vertPosition");
+	// Gets the location ID of the uniform variables in the shader
+	GLint modelMatrixID = gl::GetUniformLocation(kCamera->getShaderHandle(), "mModel");
+	GLint viewMatrixID = gl::GetUniformLocation(kCamera->getShaderHandle(), "mView");
+	GLint projectionMatrixID = gl::GetUniformLocation(kCamera->getShaderHandle(), "mProjection");
+
+	// Passes the matrix data to the shader
+	gl::UniformMatrix4fv(modelMatrixID, 1, gl::FALSE_, glm::value_ptr(kModel));
+	gl::UniformMatrix4fv(viewMatrixID, 1, gl::FALSE_, glm::value_ptr(kCamera->getView()));
+	gl::UniformMatrix4fv(projectionMatrixID, 1, gl::FALSE_, glm::value_ptr(kCamera->getPerspective()));
+
+	gl::BindVertexArray(m_vaoHandle);
+	gl::DrawElements(gl::TRIANGLES, m_sizeOfIndices / sizeof(GLuint), gl::UNSIGNED_INT, NULL);
+	gl::BindVertexArray(0);
 }
-void Robot::drawArm(const float kfXPos, const float kfYPos, const float kfZPos)
+void Robot::drawArm(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel, const side kSide)
 {
-	//glPushMatrix();
-	//	glColor3f(1.0f, 0.0f, 0.0f);	// red
-	//	glTranslatef(xPos, yPos, zPos);
-	//	glScalef(1.0f, 4.0f, 1.0f);		// arm is a 1x4x1 cube
-	//	DrawCube(0.0f, 0.0f, 0.0f);
-	//glPopMatrix();
+	// Scaling matrix
+	glm::mat4 scale = glm::mat4 // arm is a 1x4x1 cube
+	(
+		1, 0, 0, 0,
+		0, 4, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1
+	);
+	float fXOffset;
+
+	if (kSide == LEFT)
+		fXOffset = 2.5f;
+	else
+		fXOffset = -1.5f;
+
+	// Translation matrix
+	glm::mat4 translate = glm::mat4
+	(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		fXOffset, 0, -0.5, 1
+	);
+	// Rotational matrix
+	glm::mat4 rotate = glm::mat4
+	(
+		glm::cos(m_fArmAngles[kSide]), 0, -glm::sin(m_fArmAngles[kSide]), 0,
+		0, 1, 0, 0,
+		glm::sin(m_fArmAngles[kSide]), 0, glm::cos(m_fArmAngles[kSide]), 0,
+		0, 0, 0, 1
+	);
+
+	// Defines Model position matrix = The sum up all the matraces
+	glm::mat4 M = scale * translate * rotate * kModel;
+
+	drawCube(kCamera, M);
 }
-void Robot::drawHead(const float kfXPos, const float kfYPos, const float kfZPos)
+void Robot::drawHead(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel)
 {
+	// Scaling matrix
+	glm::mat4 scale = glm::mat4 // head is a 2x2x2 cube
+	(
+		2, 0, 0, 0,
+		0, 2, 0, 0,
+		0, 0, 2, 0,
+		0, 0, 0, 1
+	);
+	// Translation matrix
+	glm::mat4 translate = glm::mat4
+	(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		1, 2, 0, 1
+	);
+
+	// Defines Model position matrix = The sum up all the matraces
+	glm::mat4 M = scale * translate * kModel;
+
+	drawCube(kCamera, M);
+
 	//glPushMatrix();
 	//	glColor3f(1.0f, 1.0f, 1.0f);	// white
 	//	glTranslatef(xPos, yPos, zPos);
-	//	glScalef(2.0f, 2.0f, 2.0f);		// head is a 2x2x2 cube
+	//	glScalef(2.0f, 2.0f, 2.0f);		
 	//	DrawCube(0.0f, 0.0f, 0.0f);
 	//glPopMatrix();
 }
-void Robot::drawTorso(const float kfXPos, const float kfYPos, const float kfZPos)
+void Robot::drawTorso(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel)
 {
+	// Scaling matrix
+	glm::mat4 scale = glm::mat4 // torso is a 3x5x2 cube
+	(
+		3, 0, 0, 0,
+		0, 5, 0, 0,
+		0, 0, 2, 0,
+		0, 0, 0, 1
+	);
+	// Translation matrix
+	glm::mat4 translate = glm::mat4
+	(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		1.5, 0, 0, 1
+	);
+
+	// Defines Model position matrix = The sum up all the matraces
+	glm::mat4 M = scale * translate * kModel;
+
+	drawCube(kCamera, M);
+
 	//glPushMatrix();
 	//	glColor3f(0.0f, 0.0f, 1.0f);	// blue
 	//	glTranslatef(xPos, yPos, zPos);
-	//	glScalef(3.0f, 5.0f, 2.0f);		// torso is a 3x5x2 cube
+	//	glScalef(3.0f, 5.0f, 2.0f);		
 	//	DrawCube(0.0f, 0.0f, 0.0f);
 	//glPopMatrix();
 }
-void Robot::drawLeg(const float kfXPos, const float kfYPos, const float kfZPos)
+void Robot::drawLeg(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel, const side kSide)
 {
+	// Scaling matrix
+	glm::mat4 scale = glm::mat4 // leg is a 1x5x1 cube
+	(
+		1, 0, 0, 0,
+		0, 5, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1
+	);
+
+	float fXOffset;
+
+	if (kSide == LEFT)
+		fXOffset = -0.5f;
+	else
+		fXOffset = 1.5f;
+
+	// Translation matrix
+	glm::mat4 translate = glm::mat4
+	(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		fXOffset, -5.0, -0.5, 1
+	);
+	// Rotational matrix
+	glm::mat4 rotate = glm::mat4
+	(
+		glm::cos(m_fLegAngles[kSide]), 0, -glm::sin(m_fLegAngles[kSide]), 0,
+		0, 1, 0, 0,
+		glm::sin(m_fLegAngles[kSide]), 0, glm::cos(m_fLegAngles[kSide]), 0,
+		0, 0, 0, 1
+	);
+
+	// Defines Model position matrix = The sum up all the matraces
+	glm::mat4 M = scale * translate * rotate * kModel;
+
+	drawCube(kCamera, M);
+
 	//glPushMatrix();
 	//	glTranslatef(xPos, yPos, zPos);
 	//
@@ -98,17 +253,95 @@ void Robot::drawLeg(const float kfXPos, const float kfYPos, const float kfZPos)
 	//	DrawCube(0.0f, 0.0f, 0.0f);
 	//glPopMatrix();
 }
-void Robot::drawFoot(const float kfXPos, const float kfYPos, const float kfZPos)
+void Robot::drawFoot(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel, const side kSide)
 {
+	// Scaling matrix 
+	glm::mat4 scale = glm::mat4 // foot is a 1x0.5x3 cube
+	(
+		1, 0, 0, 0,
+		0, 0.5, 0, 0,
+		0, 0, 3, 0,
+		0, 0, 0, 1
+	);
+
+	float fXOffset;
+
+	if (kSide == LEFT)
+		fXOffset = -0.5f;
+	else
+		fXOffset = 1.5f;
+
+	// Translation matrix
+	glm::mat4 translate = glm::mat4
+	(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		fXOffset, -5.0, -0.5, 1
+	);
+	// Rotational matrix
+	glm::mat4 rotate = glm::mat4
+	(
+		glm::cos(m_fLegAngles[kSide]), 0, -glm::sin(m_fLegAngles[kSide]), 0,
+		0, 1, 0, 0,
+		glm::sin(m_fLegAngles[kSide]), 0, glm::cos(m_fLegAngles[kSide]), 0,
+		0, 0, 0, 1
+	);
+
+	// Defines Model position matrix = The sum up all the matraces
+	glm::mat4 M = scale * translate * rotate * kModel;
+
+	drawCube(kCamera, M);
+
 	//glPushMatrix();
-	//	glColor3f(1.0f, 1.0f, 1.0f);
+	//	glColor3f(1.0f, 1.0f, 1.0f); // yellow
 	//	glTranslatef(xPos, yPos, zPos);
-	//	glScalef(1.0f, 0.5f, 3.0f);
+	//	glScalef(1.0f, 0.5f, 3.0f); // foot is a 1x0.5x3 cube
 	//	DrawCube(0.0f, 0.0f, 0.0f);
 	//glPopMatrix();
 }
-void Robot::draw(const float kfXPos, const float kfYPos, const float kfZPos, const float kfRotation)
+void Robot::draw(const std::shared_ptr<Camera> kCamera, const glm::vec3 kPosition, const float kfRotation)
 {
+	// Sets the active shader
+	gl::UseProgram(kCamera->getShaderHandle());
+
+	// Scaling matrix
+	glm::mat4 scale = glm::mat4 
+	(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		0, 0, 0, 1
+	);
+	// Translation matrix
+	glm::mat4 translate = glm::mat4
+	(
+		1, 0, 0, 0,
+		0, 1, 0, 0,
+		0, 0, 1, 0,
+		kPosition.x, kPosition.y, kPosition.z, 1
+	);
+	// Rotational matrix
+	glm::mat4 rotate = glm::mat4
+	(
+		glm::cos(kfRotation), 0, -glm::sin(kfRotation), 0,
+		0, 1, 0, 0,
+		glm::sin(kfRotation), 0, glm::cos(kfRotation), 0,
+		0, 0, 0, 1
+	);
+
+	// Defines Model position matrix = The sum up all the matraces
+	glm::mat4 M = scale * translate * rotate;
+
+	drawHead(kCamera, M);
+	drawTorso(kCamera, M);
+
+	drawArm(kCamera, M, LEFT);
+	drawArm(kCamera, M, RIGHT);
+
+	drawLeg(kCamera, M, LEFT);
+	drawLeg(kCamera, M, RIGHT);
+
 	//glPushMatrix();
 	//	glTranslatef(m_position.x, m_position.y, m_position.z);	// draw robot at desired coordinates
 	//	glRotatef(m_rotation, false, true, false);
@@ -154,34 +387,34 @@ void Robot::update(const float kfElapsedTime)
 	// if leg is moving forward, increase angle, else decrease angle
 	for (char side = 0; side < 2; side++)
 	{
-		if (m_armsMoving)
+		if (m_bArmsMoving)
 		{
 			// arms
-			if (m_armStates[side] == FORWARD_STATE)
-				m_armAngles[side] += 20.0f * kfElapsedTime;
+			if (m_armStates[side] == FORWARD)
+				m_fArmAngles[side] += 20.0f * kfElapsedTime;
 			else
-				m_armAngles[side] -= 20.0f * kfElapsedTime;
+				m_fArmAngles[side] -= 20.0f * kfElapsedTime;
 
 			// change state if exceeding angles
-			if (m_armAngles[side] >= 15.0f)
-				m_armStates[side] = BACKWARD_STATE;
-			else if (m_armAngles[side] <= -15.0f)
-				m_armStates[side] = FORWARD_STATE;
+			if (m_fArmAngles[side] >= 15.0f)
+				m_armStates[side] = BACKWARD;
+			else if (m_fArmAngles[side] <= -15.0f)
+				m_armStates[side] = FORWARD;
 		}
 
-		if (m_legsMoving)
+		if (m_bLegsMoving)
 		{
 			// legs
-			if (m_legStates[side] == FORWARD_STATE)
-				m_legAngles[side] += 20.0f * kfElapsedTime;
+			if (m_legStates[side] == FORWARD)
+				m_fLegAngles[side] += 20.0f * kfElapsedTime;
 			else
-				m_legAngles[side] -= 20.0f * kfElapsedTime;
+				m_fLegAngles[side] -= 20.0f * kfElapsedTime;
 
 			// change state if exceeding angles
-			if (m_legAngles[side] >= 15.0f)
-				m_legStates[side] = BACKWARD_STATE;
-			else if (m_legAngles[side] <= -15.0f)
-				m_legStates[side] = FORWARD_STATE;
+			if (m_fLegAngles[side] >= 15.0f)
+				m_legStates[side] = BACKWARD;
+			else if (m_fLegAngles[side] <= -15.0f)
+				m_legStates[side] = FORWARD;
 		}
 	}
 }

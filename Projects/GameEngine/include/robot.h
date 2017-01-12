@@ -2,48 +2,126 @@
 #define ROBOT_H
 
 #include "glm.hpp"
-
-// constants for arm and leg movement states
-const char BACKWARD_STATE = 0;
-const char FORWARD_STATE = 1;
-
-// index constants for accessing arm and leg array data
-const char LEFT = 0;
-const char RIGHT = 1;
+#include "gl_core_4_3.hpp"
+#include <memory>
+#include "camera.h"
 
 class Robot
 {
 private:
 
-	char m_legStates[2];
-	char m_armStates[2];
+	enum side { LEFT, RIGHT }; //!< Side enum for handling robot limbs
+	enum moveState { FORWARD, BACKWARD }; //!< Movement state for limb control
 
-	float m_legAngles[2];
-	float m_armAngles[2];
+	moveState m_legStates[2]; //!< MoveState array for left&right leg movement handling
+	moveState m_armStates[2]; //!< MoveState array for left&right arm movement handling
+	
+	float m_fLegAngles[2]; //!< Float array for left&right leg movement handling
+	float m_fArmAngles[2]; //!< Float array for left&right arm movement handling
 
-	// draws a unit cube
-	void drawCube(const float kfXPos, const float kfYPos, const float kfZPos);
+	GLuint m_vboHandles[3];
+	GLuint m_vaoHandle;
+	GLuint m_programHandle;
+	GLuint m_sizeOfIndices;
 
-	// methods to draw the parts of the robot
-	void drawArm(const float kfXPos, const float kfYPos, const float kfZPos);
-	void drawHead(const float kfXPos, const float kfYPos, const float kfZPos);
-	void drawTorso(const float kfXPos, const float kfYPos, const float kfZPos);
-	void drawLeg(const float kfXPos, const float kfYPos, const float kfZPos);
-	void drawFoot(const float kfXPos, const float kfYPos, const float kfZPos);
+	/////////////////////////////////////////////////
+	///
+	/// \brief Draws a 1x1x1 cube at a specified position
+	///
+	/// \param kPosition Vector for Robot position
+	/// \param kModel Model matrix used to translate, scale or rotate
+	///
+	///////////////////////////////////////////////// 
+	void drawCube(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel);
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Draws the Robot's arm at a specified position
+	///
+	/// \param kCamera Camera pointer to use in rendering
+	/// \param kModel Model matrix used to translate, scale or rotate
+	///
+	///////////////////////////////////////////////// 
+	void drawArm(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel, const side kSide);
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Draws the Robot's head at a specified position
+	///
+	/// \param kCamera Camera pointer to use in rendering
+	/// \param kModel Model matrix used to translate, scale or rotate
+	///
+	///////////////////////////////////////////////// 
+	void drawHead(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel);
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Draws the Robot's torso at a specified position
+	///
+	/// \param kCamera Camera pointer to use in rendering
+	/// \param kModel Model matrix used to translate, scale or rotate
+	///
+	///////////////////////////////////////////////// 
+	void drawTorso(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel);
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Draws the Robot's leg at a specified position
+	///
+	/// \param kCamera Camera pointer to use in rendering
+	/// \param kModel Model matrix used to translate, scale or rotate
+	///
+	///////////////////////////////////////////////// 
+	void drawLeg(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel, const side kSide);
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Draws the Robot's foot at a specified position
+	///
+	/// \param kCamera Camera pointer to use in rendering
+	/// \param kModel Model matrix used to translate, scale or rotate
+	///
+	///////////////////////////////////////////////// 
+	void drawFoot(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel, const side kSide);
 
 public:
 
+	bool m_bArmsMoving; //!< Boolean for arm movement control
+	bool m_bLegsMoving; //!< Boolean for leg movement control
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Constructor
+	///
+	///////////////////////////////////////////////// 
 	Robot();
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Denstructor
+	///
+	///////////////////////////////////////////////// 
 	~Robot() {};
 
-	bool m_armsMoving;
-	bool m_legsMoving;
-
-	// draws the entire robot
-	void draw(const float kfXPos, const float kfYPos, const float kfZPos, const float kfRotation);
-
-	// updates the robot data
+	/////////////////////////////////////////////////
+	///
+	/// \brief Called to update the Robot model
+	///
+	/// \param kfElapsedTime The time since last update
+	///
+	///////////////////////////////////////////////// 
 	void update(const float kfElapsedTime);
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Called to render the Robot model
+	///
+	/// \param kCamera Camera pointer to use in rendering
+	/// \param kPosition Vector for Robot position
+	/// \param kfRotation Float for Robot rotation angle
+	///
+	///////////////////////////////////////////////// 
+	void draw(const std::shared_ptr<Camera> kCamera, const glm::vec3 kPosition, const float kfRotation);
 };
 
 #endif

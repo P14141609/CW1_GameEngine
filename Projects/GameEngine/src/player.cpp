@@ -6,10 +6,52 @@
 #include "player.h"
 
 // Constructor
-Player::Player(const float kfXPos, const float kfYPos, const float kfZPos, const float kfRotation)
+Player::Player(const glm::vec3 kPosition, const float kfRotation)
 {
-	m_position = glm::vec3(kfXPos, kfYPos, kfZPos);
+	m_position = kPosition;
 	m_rotation = kfRotation;
+}
+
+// Void: Processes keyboard input
+void Player::processKeyInput(const int kiKey)
+{
+	switch (kiKey)
+	{
+		// If input is GLFW_KEY_SPACE
+		case GLFW_KEY_SPACE:
+		{
+			// Inverts the current bool values for limb movement
+			m_pRobot->m_bArmsMoving = !m_pRobot->m_bArmsMoving;
+			m_pRobot->m_bLegsMoving = !m_pRobot->m_bLegsMoving;
+		} break;
+
+		// If input is GLFW_KEY_UP
+		case GLFW_KEY_UP:
+		{
+			moveForward(0.5f);
+		} break;
+
+		// If input is GLFW_KEY_DOWN
+		case GLFW_KEY_DOWN:
+		{
+			moveForward(-0.5f);
+		} break;
+
+		// If input is GLFW_KEY_LEFT
+		case GLFW_KEY_LEFT:
+		{
+			m_rotation += 2.5f;
+		} break;
+
+		// If input is GLFW_KEY_RIGHT
+		case GLFW_KEY_RIGHT:
+		{
+			m_rotation += -2.5f;
+		} break;
+
+		// Default case
+		default: break; // Do Nothing
+	}
 }
 
 // Void: Moves the Player forward
@@ -26,11 +68,11 @@ void Player::moveForward(const float kfDist)
 // Void: Called to update the Player model
 void Player::update(const float kfElapsedTime)
 {
-	m_robot->update(kfElapsedTime);
+	m_pRobot->update(kfElapsedTime);
 }
 
 // Void: Called to render the Player model
-void Player::render()
+void Player::render(const std::shared_ptr<Camera> kCamera)
 {
-	m_robot->draw(m_position.x, m_position.y, m_position.z, m_rotation);
+	m_pRobot->draw(kCamera, m_position, m_rotation);
 }
