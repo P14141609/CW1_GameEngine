@@ -64,8 +64,10 @@ public:
 	///
 	/// \brief Called to render the Player model
 	///
+	/// \param kCamera Camera pointer to use in rendering
+	///
 	///////////////////////////////////////////////// 
-	void render();
+	void render(const std::shared_ptr<Camera> kCamera);
 };
 
 #endif
