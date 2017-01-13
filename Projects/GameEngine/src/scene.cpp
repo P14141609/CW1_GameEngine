@@ -49,5 +49,5 @@ void Scene::render()
 	m_player.render(m_pActiveCamera);
 
 	for (std::shared_ptr<Model> model : m_pModels) 
-		model->render();
+		model->render(m_pActiveCamera);
 }
