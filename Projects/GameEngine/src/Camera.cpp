@@ -3,6 +3,7 @@
 */
 
 // Imports
+#include "stdafx.h"
 #include "camera.h"
 
 // Constructor

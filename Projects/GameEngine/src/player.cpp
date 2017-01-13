@@ -1,8 +1,10 @@
+
 /**
 @file player.cpp
 */
 
 // Imports
+#include "stdafx.h"
 #include "player.h"
 
 // Constructor

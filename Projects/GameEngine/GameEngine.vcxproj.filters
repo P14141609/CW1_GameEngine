@@ -54,6 +54,9 @@
     <ClCompile Include="src\glslprogram.cpp">
       <Filter>Source Files\System</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\include\GLLoadGen\source\gl_core_4_3.cpp">
+      <Filter>Source Files\System</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\robot.h">
@@ -72,6 +75,9 @@
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
     <ClInclude Include="include\glslprogram.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\GLLoadGen\include\gl_core_4_3.hpp">
       <Filter>Header Files\System</Filter>
     </ClInclude>
   </ItemGroup>

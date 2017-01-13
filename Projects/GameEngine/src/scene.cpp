@@ -3,6 +3,7 @@
 */
 
 // Imports
+#include "stdafx.h"
 #include "scene.h"
 
 // Constructor
@@ -29,6 +30,11 @@ Scene::Scene()
 
 	// Sets the active Camera to the first in the vector
 	m_pActiveCamera = m_pCameras.at(0);
+
+	m_pModels.push_back
+	(
+		std::shared_ptr<Model>(new Model())
+	);
 }
 
 // Void: Called to update the Scene

@@ -8,6 +8,7 @@
 */
 
 // Imports
+#include "stdafx.h"
 #include "scene.h"
 #include <iostream>
 // OpenGL

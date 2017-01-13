@@ -1,8 +1,10 @@
+
 /**
 @file robot.cpp
 */
 
 // Imports
+#include "stdafx.h"
 #include "robot.h"
 
 // Constructor

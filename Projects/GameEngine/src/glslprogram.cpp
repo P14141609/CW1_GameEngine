@@ -1,4 +1,5 @@
 
+#include "stdafx.h"
 #include "glslprogram.h"
 
 namespace GLSLShaderInfo {
