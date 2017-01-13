@@ -12,6 +12,8 @@ Player::Player(const glm::vec3 kPosition, const float kfRotation)
 {
 	m_position = kPosition;
 	m_rotation = kfRotation;
+
+	m_pRobot = std::shared_ptr<Robot>(new Robot());
 }
 
 // Void: Processes keyboard input
