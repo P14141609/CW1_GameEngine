@@ -3,7 +3,10 @@
 
 #include "glm.hpp"
 #include "gl_core_4_3.hpp"
+
+#include <GLFW/glfw3.h>
 #include <memory>
+
 #include "camera.h"
 
 class Robot
@@ -21,7 +24,6 @@ private:
 
 	GLuint m_vboHandles[3];
 	GLuint m_vaoHandle;
-	GLuint m_programHandle;
 	GLuint m_sizeOfIndices;
 
 	/////////////////////////////////////////////////

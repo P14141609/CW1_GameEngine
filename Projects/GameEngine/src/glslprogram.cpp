@@ -1,14 +1,6 @@
 
 #include "glslprogram.h"
 
-
-#include <fstream>
-using std::ifstream;
-using std::ios;
-
-#include <sstream>
-#include <sys/stat.h>
-
 namespace GLSLShaderInfo {
 	struct shader_file_extension {
 		const char *ext;
@@ -57,7 +49,7 @@ throw(GLSLProgramException) {
 	int numExts = sizeof(GLSLShaderInfo::extensions) / sizeof(GLSLShaderInfo::shader_file_extension);
 
 	// Check the file name's extension to determine the shader type
-	string ext = getExtension(fileName);
+	std::string ext = getExtension(fileName);
 	GLSLShader::GLSLShaderType type = GLSLShader::VERTEX;
 	bool matchFound = false;
 	for (int i = 0; i < numExts; i++) {
@@ -70,7 +62,7 @@ throw(GLSLProgramException) {
 
 	// If we didn't find a match, throw an exception
 	if (!matchFound) {
-		string msg = "Unrecognized extension: " + ext;
+		std::string msg = "Unrecognized extension: " + ext;
 		throw GLSLProgramException(msg);
 	}
 
@@ -78,12 +70,12 @@ throw(GLSLProgramException) {
 	compileShader(fileName, type);
 }
 
-string GLSLProgram::getExtension(const char * name) {
-	string nameStr(name);
+std::string GLSLProgram::getExtension(const char * name) {
+	std::string nameStr(name);
 
 	size_t loc = nameStr.find_last_of('.');
-	if (loc != string::npos) {
-		return nameStr.substr(loc, string::npos);
+	if (loc != std::string::npos) {
+		return nameStr.substr(loc, std::string::npos);
 	}
 	return "";
 }
@@ -94,7 +86,7 @@ void GLSLProgram::compileShader(const char * fileName,
 {
 	if (!fileExists(fileName))
 	{
-		string message = string("Shader: ") + fileName + " not found.";
+		std::string message = std::string("Shader: ") + fileName + " not found.";
 		throw GLSLProgramException(message);
 	}
 
@@ -105,9 +97,9 @@ void GLSLProgram::compileShader(const char * fileName,
 		}
 	}
 
-	ifstream inFile(fileName, ios::in);
+	std::ifstream inFile(fileName, std::ios::in);
 	if (!inFile) {
-		string message = string("Unable to open: ") + fileName;
+		std::string message = std::string("Unable to open: ") + fileName;
 		throw GLSLProgramException(message);
 	}
 
@@ -119,7 +111,7 @@ void GLSLProgram::compileShader(const char * fileName,
 	compileShader(code.str(), type, fileName);
 }
 
-void GLSLProgram::compileShader(const string & source,
+void GLSLProgram::compileShader(const std::string & source,
 	GLSLShader::GLSLShaderType type,
 	const char * fileName)
 	throw(GLSLProgramException)
@@ -145,7 +137,7 @@ void GLSLProgram::compileShader(const string & source,
 	if (FALSE == result) {
 		// Compile failed, get log
 		int length = 0;
-		string logString;
+		std::string logString;
 		gl::GetShaderiv(shaderHandle, gl::INFO_LOG_LENGTH, &length);
 		if (length > 0) {
 			char * c_log = new char[length];
@@ -154,9 +146,9 @@ void GLSLProgram::compileShader(const string & source,
 			logString = c_log;
 			delete[] c_log;
 		}
-		string msg;
+		std::string msg;
 		if (fileName) {
-			msg = string(fileName) + ": shader compliation failed\n";
+			msg = std::string(fileName) + ": shader compliation failed\n";
 		}
 		else {
 			msg = "Shader compilation failed.\n";
@@ -185,7 +177,7 @@ void GLSLProgram::link() throw(GLSLProgramException)
 	if (FALSE == status) {
 		// Store log and return false
 		int length = 0;
-		string logString;
+		std::string logString;
 
 		gl::GetProgramiv(handle, gl::INFO_LOG_LENGTH, &length);
 
@@ -197,7 +189,7 @@ void GLSLProgram::link() throw(GLSLProgramException)
 			delete[] c_log;
 		}
 
-		throw GLSLProgramException(string("Program link failed:\n") + logString);
+		throw GLSLProgramException(std::string("Program link failed:\n") + logString);
 	}
 	else {
 		uniformLocations.clear();
@@ -238,30 +230,30 @@ void GLSLProgram::setUniform(const char *name, float x, float y, float z)
 	gl::Uniform3f(loc, x, y, z);
 }
 
-void GLSLProgram::setUniform(const char *name, const vec3 & v)
+void GLSLProgram::setUniform(const char *name, const glm::vec3 & v)
 {
 	this->setUniform(name, v.x, v.y, v.z);
 }
 
-void GLSLProgram::setUniform(const char *name, const vec4 & v)
+void GLSLProgram::setUniform(const char *name, const glm::vec4 & v)
 {
 	GLint loc = getUniformLocation(name);
 	gl::Uniform4f(loc, v.x, v.y, v.z, v.w);
 }
 
-void GLSLProgram::setUniform(const char *name, const vec2 & v)
+void GLSLProgram::setUniform(const char *name, const glm::vec2 & v)
 {
 	GLint loc = getUniformLocation(name);
 	gl::Uniform2f(loc, v.x, v.y);
 }
 
-void GLSLProgram::setUniform(const char *name, const mat4 & m)
+void GLSLProgram::setUniform(const char *name, const glm::mat4 & m)
 {
 	GLint loc = getUniformLocation(name);
 	gl::UniformMatrix4fv(loc, 1, FALSE, &m[0][0]);
 }
 
-void GLSLProgram::setUniform(const char *name, const mat3 & m)
+void GLSLProgram::setUniform(const char *name, const glm::mat3 & m)
 {
 	GLint loc = getUniformLocation(name);
 	gl::UniformMatrix3fv(loc, 1, FALSE, &m[0][0]);
@@ -410,7 +402,7 @@ void GLSLProgram::validate() throw(GLSLProgramException)
 	if (FALSE == status) {
 		// Store log and return false
 		int length = 0;
-		string logString;
+		std::string logString;
 
 		gl::GetProgramiv(handle, gl::INFO_LOG_LENGTH, &length);
 
@@ -422,14 +414,14 @@ void GLSLProgram::validate() throw(GLSLProgramException)
 			delete[] c_log;
 		}
 
-		throw GLSLProgramException(string("Program failed to validate\n") + logString);
+		throw GLSLProgramException(std::string("Program failed to validate\n") + logString);
 
 	}
 }
 
 int GLSLProgram::getUniformLocation(const char * name)
 {
-	std::map<string, int>::iterator pos;
+	std::map<std::string, int>::iterator pos;
 	pos = uniformLocations.find(name);
 
 	if (pos == uniformLocations.end()) {
@@ -439,7 +431,7 @@ int GLSLProgram::getUniformLocation(const char * name)
 	return uniformLocations[name];
 }
 
-bool GLSLProgram::fileExists(const string & fileName)
+bool GLSLProgram::fileExists(const std::string & fileName)
 {
 	struct stat info;
 	int ret = -1;
