@@ -2,7 +2,14 @@
 #define MODEL_H
 
 // Imports
-#include <string>
+#include "glm.hpp"
+#include "gl_core_4_3.hpp"
+
+#include <GLFW/glfw3.h>
+#include <memory>
+#include <vector>
+
+#include "camera.h"
 
 /////////////////////////////////////////////////
 ///
@@ -12,6 +19,12 @@
 class Model
 {
 private:
+	glm::vec3 m_position; //!< Model position vector
+	float m_fRotation; //!< Model rotation angle
+
+	GLuint m_vboHandles[3];
+	GLuint m_vaoHandle;
+	GLuint m_indexDataSize;
 
 protected:
 
@@ -37,8 +50,10 @@ public:
 	///
 	/// \brief Called to render the Model
 	///
+	/// \param kCamera Camera pointer to use in rendering
+	///
 	///////////////////////////////////////////////// 
-	void render();
+	void render(const std::shared_ptr<Camera> kCamera);
 };
 
 #endif
