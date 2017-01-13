@@ -31,6 +31,12 @@
     <Filter Include="Resource Files\Shaders">
       <UniqueIdentifier>{82981e3b-8394-4c06-96a4-15d59492dec5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Scene\Model">
+      <UniqueIdentifier>{52efd0b2-8d9d-4ea9-b526-aa4260594ba4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene\Model">
+      <UniqueIdentifier>{d27d72eb-6548-4b83-844a-766cde9b7947}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -45,9 +51,6 @@
     <ClCompile Include="src\scene.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="src\model.cpp">
-      <Filter>Source Files\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="src\camera.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
@@ -57,6 +60,15 @@
     <ClCompile Include="..\..\include\GLLoadGen\source\gl_core_4_3.cpp">
       <Filter>Source Files\System</Filter>
     </ClCompile>
+    <ClCompile Include="src\model.cpp">
+      <Filter>Source Files\Scene\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Texture.cpp">
+      <Filter>Source Files\Scene\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Bitmap.cpp">
+      <Filter>Source Files\Scene\Model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\robot.h">
@@ -64,9 +76,6 @@
     </ClInclude>
     <ClInclude Include="include\player.h">
       <Filter>Header Files\Scene\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="include\model.h">
-      <Filter>Header Files\Scene</Filter>
     </ClInclude>
     <ClInclude Include="include\scene.h">
       <Filter>Header Files\Scene</Filter>
@@ -79,6 +88,15 @@
     </ClInclude>
     <ClInclude Include="..\..\include\GLLoadGen\include\gl_core_4_3.hpp">
       <Filter>Header Files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="include\model.h">
+      <Filter>Header Files\Scene\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Texture.h">
+      <Filter>Header Files\Scene\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Bitmap.h">
+      <Filter>Header Files\Scene\Model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

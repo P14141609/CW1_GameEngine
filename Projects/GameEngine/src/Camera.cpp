@@ -19,6 +19,9 @@ Camera::Camera(const std::string ksShaderFile, const glm::vec3 kPosition, const 
 
 	// Defines Perspective
 	m_perspective = kPerspective;
+
+	// Initialises the shader
+	initShader(ksShaderFile);
 }
 
 void Camera::initShader(const std::string ksShaderFile)
