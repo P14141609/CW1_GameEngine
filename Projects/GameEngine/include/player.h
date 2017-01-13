@@ -14,7 +14,7 @@
 class Player
 {
 private:
-	std::unique_ptr<Robot> m_pRobot; //!< The Robot player character
+	std::shared_ptr<Robot> m_pRobot; //!< The Robot player character
 
 	glm::vec3 m_position; //!< Player position vector
 	float m_rotation; //!< Player rotation angle

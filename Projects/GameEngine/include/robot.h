@@ -3,11 +3,10 @@
 
 #include "glm.hpp"
 #include "gl_core_4_3.hpp"
-
-#include <GLFW/glfw3.h>
 #include <memory>
-
+#include <vector>
 #include "camera.h"
+#include "model.h"
 
 class Robot
 {
@@ -21,70 +20,8 @@ private:
 	
 	float m_fLegAngles[2]; //!< Float array for left&right leg movement handling
 	float m_fArmAngles[2]; //!< Float array for left&right arm movement handling
-
-	GLuint m_vboHandles[3];
-	GLuint m_vaoHandle;
-	GLuint m_sizeOfIndices;
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Draws a 1x1x1 cube at a specified position
-	///
-	/// \param kPosition Vector for Robot position
-	/// \param kModel Model matrix used to translate, scale or rotate
-	///
-	///////////////////////////////////////////////// 
-	void drawCube(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel);
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Draws the Robot's arm at a specified position
-	///
-	/// \param kCamera Camera pointer to use in rendering
-	/// \param kModel Model matrix used to translate, scale or rotate
-	///
-	///////////////////////////////////////////////// 
-	void drawArm(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel, const side kSide);
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Draws the Robot's head at a specified position
-	///
-	/// \param kCamera Camera pointer to use in rendering
-	/// \param kModel Model matrix used to translate, scale or rotate
-	///
-	///////////////////////////////////////////////// 
-	void drawHead(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel);
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Draws the Robot's torso at a specified position
-	///
-	/// \param kCamera Camera pointer to use in rendering
-	/// \param kModel Model matrix used to translate, scale or rotate
-	///
-	///////////////////////////////////////////////// 
-	void drawTorso(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel);
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Draws the Robot's leg at a specified position
-	///
-	/// \param kCamera Camera pointer to use in rendering
-	/// \param kModel Model matrix used to translate, scale or rotate
-	///
-	///////////////////////////////////////////////// 
-	void drawLeg(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel, const side kSide);
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Draws the Robot's foot at a specified position
-	///
-	/// \param kCamera Camera pointer to use in rendering
-	/// \param kModel Model matrix used to translate, scale or rotate
-	///
-	///////////////////////////////////////////////// 
-	void drawFoot(const std::shared_ptr<Camera> kCamera, const glm::mat4 kModel, const side kSide);
+	
+	std::vector<Model> m_bodyparts; //!< Vector of Models to store each body part
 
 public:
 
