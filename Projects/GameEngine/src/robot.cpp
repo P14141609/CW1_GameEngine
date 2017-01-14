@@ -45,7 +45,7 @@ void Robot::draw(const std::shared_ptr<Camera> kCamera, const glm::vec3 kPositio
 
 	for (Model bodypart : m_bodyparts)
 	{
-		bodypart.render();
+		bodypart.render(kCamera);
 	}
 }
 
