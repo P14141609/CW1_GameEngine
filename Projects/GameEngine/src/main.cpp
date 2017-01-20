@@ -8,6 +8,8 @@
 */
 
 // Imports
+#include "stdafx.h"
+#include "scene.h"
 #include <iostream>
 // OpenGL
 #include "gl_core_4_3.hpp"
@@ -52,14 +54,25 @@ int main()
 	// Key handling
 	glfwSetKeyCallback(g_window, onKeyEvent);
 	
+	// Load the OpenGL functions.
+	gl::exts::LoadTest didLoad = gl::sys::LoadFunctions();
+	if (!didLoad)
+	{
+		glfwTerminate();
+		exit(EXIT_FAILURE);
+	}
+
+	// Defines scene
+	Scene scene = Scene();
+
 	// Main loop
 	while (!glfwWindowShouldClose(g_window) && !glfwGetKey(g_window, GLFW_KEY_ESCAPE)) 
 	{
 		// Update
-		// TODO
+		scene.update((float)glfwGetTime());
 		
 		// Render
-		// TODO
+		scene.render();
 
 		// GLFW processes
 		glfwSwapBuffers(g_window);
