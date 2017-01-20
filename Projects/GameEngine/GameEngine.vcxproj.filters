@@ -28,9 +28,6 @@
     <Filter Include="Source Files\Scene\Player">
       <UniqueIdentifier>{27f0d472-6309-49a0-88a8-aed603c84253}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Shaders">
-      <UniqueIdentifier>{82981e3b-8394-4c06-96a4-15d59492dec5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Scene\Model">
       <UniqueIdentifier>{52efd0b2-8d9d-4ea9-b526-aa4260594ba4}</UniqueIdentifier>
     </Filter>
@@ -92,31 +89,8 @@
     <ClInclude Include="include\Bitmap.h">
       <Filter>Header Files\Scene\Model</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res\Shaders\basic.frag">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="res\Shaders\basic.vert">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="res\Shaders\cubemap.frag">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="res\Shaders\cubemap.vert">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="res\Shaders\reflection.frag">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="res\Shaders\reflection.vert">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="res\Shaders\refraction.frag">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
-    <None Include="res\Shaders\refraction.vert">
-      <Filter>Resource Files\Shaders</Filter>
-    </None>
+    <ClInclude Include="include\stdafx.h">
+      <Filter>Header Files\System</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

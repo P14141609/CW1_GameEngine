@@ -121,17 +121,8 @@
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\player.h" />
     <ClInclude Include="include\robot.h" />
+    <ClInclude Include="include\stdafx.h" />
     <ClInclude Include="include\Texture.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res\Shaders\basic.frag" />
-    <None Include="res\Shaders\basic.vert" />
-    <None Include="res\Shaders\cubemap.frag" />
-    <None Include="res\Shaders\cubemap.vert" />
-    <None Include="res\Shaders\reflection.frag" />
-    <None Include="res\Shaders\reflection.vert" />
-    <None Include="res\Shaders\refraction.frag" />
-    <None Include="res\Shaders\refraction.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
