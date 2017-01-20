@@ -106,7 +106,6 @@
     <ClCompile Include="..\..\include\GLLoadGen\source\gl_core_4_3.cpp" />
     <ClCompile Include="src\Bitmap.cpp" />
     <ClCompile Include="src\camera.cpp" />
-    <ClCompile Include="src\glslprogram.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\model.cpp" />
     <ClCompile Include="src\scene.cpp" />
@@ -118,7 +117,6 @@
     <ClInclude Include="..\..\include\GLLoadGen\include\gl_core_4_3.hpp" />
     <ClInclude Include="include\Bitmap.h" />
     <ClInclude Include="include\camera.h" />
-    <ClInclude Include="include\glslprogram.h" />
     <ClInclude Include="include\model.h" />
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\player.h" />
