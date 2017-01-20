@@ -13,19 +13,22 @@ Scene::Scene()
 	// Camera #1
 	m_pCameras.push_back
 	(
-		std::shared_ptr<Camera>(new Camera
+		std::shared_ptr<Camera>
 		(
-			"res/Shaders/basic", 
-			glm::vec3(0.0f, 5.0f, 10.0f), 
-			glm::vec3(0.0f, 0.0f, 0.0f), 
-			glm::perspective
+			new Camera
 			(
-				120.f,
-				(float)1280 / 720, // TEMPORARY
-				0.0f,
-				1000.0f
+				"res/Shaders/basic",
+				glm::vec3(0.0f, 5.0f, 10.0f),
+				glm::vec3(0.0f, 0.0f, 0.0f),
+				glm::perspective
+				(
+					120.f,
+					(float)1280 / 720, // TEMPORARY
+					0.0f,
+					1000.0f
+				)
 			)
-		))
+		)
 	);
 
 	// Sets the active Camera to the first in the vector
