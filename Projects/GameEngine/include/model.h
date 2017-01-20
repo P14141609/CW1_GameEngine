@@ -2,7 +2,15 @@
 #define MODEL_H
 
 // Imports
-#include <string>
+#include "glm.hpp"
+#include "gl_core_4_3.hpp"
+#include "Texture.h"
+
+#include <GLFW/glfw3.h>
+#include <memory>
+#include <vector>
+
+#include "camera.h"
 
 /////////////////////////////////////////////////
 ///
@@ -12,6 +20,14 @@
 class Model
 {
 private:
+	glm::vec3 m_position; //!< Model position vector
+	float m_fRotation; //!< Model rotation angle
+
+	Texture* m_pTexture;
+
+	GLuint m_vboHandles[3];
+	GLuint m_vaoHandle;
+	GLuint m_indexDataSize;
 
 protected:
 
@@ -35,10 +51,32 @@ public:
 
 	/////////////////////////////////////////////////
 	///
-	/// \brief Called to render the Model
+	/// \brief Initialises Model handles
+	///
+	/// \param kfPositionData
+	/// \param kfUVData
+	/// \param kIndexData
 	///
 	///////////////////////////////////////////////// 
-	void render();
+	void initModel(const float kfPositionData[], const float kfUVData[], const GLuint kIndexData[]);
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Initialises the Model texture
+	///
+	/// \param ksFilePath The file path to a specified texture file
+	///
+	///////////////////////////////////////////////// 
+	void initTexture(const std::string ksFilePath);
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Called to render the Model
+	///
+	/// \param kCamera Camera pointer to use in rendering
+	///
+	///////////////////////////////////////////////// 
+	void render(const std::shared_ptr<Camera> kCamera);
 };
 
 #endif

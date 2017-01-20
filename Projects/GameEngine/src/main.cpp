@@ -50,10 +50,18 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 	glfwMakeContextCurrent(g_window);
-	
+
 	// Key handling
 	glfwSetKeyCallback(g_window, onKeyEvent);
 	
+	// Load the OpenGL functions.
+	gl::exts::LoadTest didLoad = gl::sys::LoadFunctions();
+	if (!didLoad)
+	{
+		glfwTerminate();
+		exit(EXIT_FAILURE);
+	}
+
 	// Defines scene
 	Scene scene = Scene();
 
