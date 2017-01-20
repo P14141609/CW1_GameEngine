@@ -7,7 +7,7 @@
 #include "camera.h"
 
 // Constructor
-Camera::Camera(const std::string ksShaderFile, const glm::vec3 kPosition, const glm::vec3 kTargetPos, const glm::mat4 kPerspective)
+Camera::Camera(const glm::vec3 kPosition, const glm::vec3 kTargetPos, const glm::mat4 kPerspective)
 {
 	// Defines View
 	m_view = glm::lookAt
@@ -19,23 +19,4 @@ Camera::Camera(const std::string ksShaderFile, const glm::vec3 kPosition, const 
 
 	// Defines Perspective
 	m_perspective = kPerspective;
-
-	// Initialises the shader
-	initShader(ksShaderFile);
-}
-
-void Camera::initShader(const std::string ksShaderFile)
-{
-	// Tries to compile the external shaders to the shader member
-	try {
-		m_shader.compileShader(std::string(ksShaderFile + ".vert").c_str());
-		m_shader.compileShader(std::string(ksShaderFile + ".frag").c_str());
-		m_shader.link();
-		m_shader.validate();
-		m_shader.use();
-	}
-	catch (GLSLProgramException & e) {
-		std::cerr << e.what() << std::endl;
-		exit(EXIT_FAILURE);
-	}
 }

@@ -27,16 +27,6 @@ class Camera
 private:
 	glm::mat4 m_view; //!< Matrix for the camera view
 	glm::mat4 m_perspective; //!< Matrix for the camera perspective
-	GLSLProgram m_shader; //!< Shader program
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Constructor
-	///
-	/// \param ksShaderFile Path to the shader files
-	///
-	///////////////////////////////////////////////// 
-	void initShader(const std::string ksShaderFile);
 
 public:
 
@@ -50,11 +40,10 @@ public:
 	/// \param kPerspective Camera perspective settings
 	///
 	///////////////////////////////////////////////// 
-	Camera(const std::string ksShaderFile, glm::vec3 kPosition, const glm::vec3 kTargetPos, const glm::mat4 kPerspective);
+	Camera(glm::vec3 kPosition, const glm::vec3 kTargetPos, const glm::mat4 kPerspective);
 
 	glm::mat4 getView() { return m_view; }; //!< Returns the view matrix
 	glm::mat4 getPerspective() { return m_perspective; }; //!< Returns the perspective matrix
-	GLuint getShaderHandle() { return m_shader.getHandle(); }; //!< Returns the shader program handle
 };
 
 #endif

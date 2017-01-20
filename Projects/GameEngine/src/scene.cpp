@@ -17,7 +17,6 @@ Scene::Scene()
 		(
 			new Camera
 			(
-				"res/Shaders/basic",
 				glm::vec3(0.0f, 5.0f, 10.0f),
 				glm::vec3(0.0f, 0.0f, 0.0f),
 				glm::perspective
@@ -49,8 +48,8 @@ void Scene::update(const float kfElapsedTime)
 // Void: Called to render the Scene
 void Scene::render()
 {
-	m_player.render(m_pActiveCamera);
+	m_player.render();
 
 	for (std::shared_ptr<Model> model : m_pModels) 
-		model->render(m_pActiveCamera);
+		model->render();
 }

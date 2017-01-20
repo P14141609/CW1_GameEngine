@@ -55,12 +55,11 @@ public:
 	///
 	/// \brief Called to render the Robot model
 	///
-	/// \param kCamera Camera pointer to use in rendering
 	/// \param kPosition Vector for Robot position
 	/// \param kfRotation Float for Robot rotation angle
 	///
 	///////////////////////////////////////////////// 
-	void draw(const std::shared_ptr<Camera> kCamera, const glm::vec3 kPosition, const float kfRotation);
+	void draw(const glm::vec3 kPosition, const float kfRotation);
 };
 
 #endif

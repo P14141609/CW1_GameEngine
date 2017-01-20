@@ -24,11 +24,7 @@ private:
 	float m_fRotation; //!< Model rotation angle
 
 	Texture* m_pTexture;
-
-	GLuint m_vboHandles[3];
-	GLuint m_vaoHandle;
-	GLuint m_indexDataSize;
-
+	
 protected:
 
 public:
@@ -73,10 +69,8 @@ public:
 	///
 	/// \brief Called to render the Model
 	///
-	/// \param kCamera Camera pointer to use in rendering
-	///
 	///////////////////////////////////////////////// 
-	void render(const std::shared_ptr<Camera> kCamera);
+	void render();
 };
 
 #endif

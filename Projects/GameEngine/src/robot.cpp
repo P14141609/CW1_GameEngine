@@ -38,15 +38,9 @@ Robot::Robot()
 	//m_bodyparts.push_back(rFoot);
 }
 
-void Robot::draw(const std::shared_ptr<Camera> kCamera, const glm::vec3 kPosition, const float kfRotation)
+void Robot::draw(const glm::vec3 kPosition, const float kfRotation)
 {
-	// Sets the active shader
-	gl::UseProgram(kCamera->getShaderHandle());
-
-	for (Model bodypart : m_bodyparts)
-	{
-		bodypart.render(kCamera);
-	}
+	// TEMPORARY
 }
 
 // Update method

@@ -76,7 +76,7 @@ void Player::update(const float kfElapsedTime)
 }
 
 // Void: Called to render the Player model
-void Player::render(const std::shared_ptr<Camera> kCamera)
+void Player::render()
 {
-	m_pRobot->draw(kCamera, m_position, m_rotation);
+	m_pRobot->draw(m_position, m_rotation);
 }
