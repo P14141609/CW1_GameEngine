@@ -10,79 +10,78 @@
 // Imports
 #include "stdafx.h"
 #include "scene.h"
-#include <iostream>
-// OpenGL
-#include "gl_core_4_3.hpp"
-#include <GLFW/glfw3.h>
-
-// Global Variables
-GLFWwindow *g_window; //!< GLFWwindow for display
-
-//!< Called upon key event
-static void onKeyEvent(GLFWwindow* window, int key, int cancode, int action, int mods)
-{
-	// If Spacebar released
-	if (key == GLFW_KEY_SPACE && action == GLFW_RELEASE)
-		return; // TEMPORARY EXAMPLE OF USAGE
-}
+// SFML
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>
 
 //!< Entry point for the application
 int main()
 {
-	// Initialises GLFW - Quits if fail
-	if (!glfwInit()) exit(EXIT_FAILURE);
+	// Instantiates window
+	sf::RenderWindow window(sf::VideoMode(1280, 720), "Games Programming - Coursework Submission 1 - Game Engine", sf::Style::Default);
 
-	// Setup for OpenGL 4.3
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, TRUE);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-	glfwWindowHint(GLFW_RESIZABLE, FALSE);
-	glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, TRUE);
-
-	// Creates a display window
-	g_window = glfwCreateWindow(1280, 720, std::string("Games Programming - Coursework Submission 1 - Game Engine").c_str(), NULL, NULL);
+	// Initialises a clock for the update loop
+	sf::Clock clock;
+	// Declares var to track elapsed time
+	sf::Time elapsedTime;
 	
-	// If window does not exist
-	if (!g_window)
-	{
-		glfwTerminate();
-		exit(EXIT_FAILURE);
-	}
-	glfwMakeContextCurrent(g_window);
-
-	// Key handling
-	glfwSetKeyCallback(g_window, onKeyEvent);
-	
-	// Load the OpenGL functions.
-	gl::exts::LoadTest didLoad = gl::sys::LoadFunctions();
-	if (!didLoad)
-	{
-		glfwTerminate();
-		exit(EXIT_FAILURE);
-	}
-
 	// Defines scene
 	Scene scene = Scene();
-
-	// Main loop
-	while (!glfwWindowShouldClose(g_window) && !glfwGetKey(g_window, GLFW_KEY_ESCAPE)) 
-	{
-		// Update
-		scene.update((float)glfwGetTime());
-		
-		// Render
-		scene.render();
-
-		// GLFW processes
-		glfwSwapBuffers(g_window);
-		glfwPollEvents();
-	}
 	
-	// Close window and terminate GLFW
-	glfwTerminate();
+	// While the window is open
+	while (window.isOpen())
+	{
+		// Event object for windows event calls
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			// If Closed event is called
+			if (event.type == sf::Event::Closed)
+			{
+				// Closes window
+				window.close();
+			}
+
+			// If KeyPressed event is called
+			if (event.type == sf::Event::KeyPressed)
+			{
+				// If Esc is pressed
+				if (event.key.code == sf::Keyboard::Escape)
+				{
+					// Closes window
+					window.close();
+				}
+			}
+		}
+
+		// Gets elapsed time from clock
+		elapsedTime = clock.getElapsedTime();
+
+		// Triggers the update loop 128 times a second
+		if (elapsedTime.asMilliseconds() > 1000 / 128)
+		{
+			// Restarts the clock
+			clock.restart();
+
+			// Updates the Scene with elapsed time
+			scene.update(elapsedTime.asSeconds());
+		}
+
+		// Clears window making it entirely black
+		window.clear(sf::Color(0, 0, 0, 255));
+
+		// Draws the Scene
+		window.draw(scene.getActiveCamera()->getView());
+
+		// Sets the view
+		window.setView();
+
+		// Displays the current frame
+		window.display();
+	}
 
 	// Finishes 'main' with return
-    return 0;
+	return 0;
 }
 
