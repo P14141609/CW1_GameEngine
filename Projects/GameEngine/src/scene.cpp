@@ -7,7 +7,7 @@
 #include "scene.h"
 
 // Constructor
-Scene::Scene()
+Scene::Scene(float fAspectRatio)
 {
 	// Pushes new Camera pointer onto vector of Cameras
 	// Camera #1
@@ -19,13 +19,10 @@ Scene::Scene()
 			(
 				glm::vec3(0.0f, 5.0f, 10.0f),
 				glm::vec3(0.0f, 0.0f, 0.0f),
-				glm::perspective
-				(
-					120.f,
-					(float)1280 / 720, // TEMPORARY
-					0.0f,
-					1000.0f
-				)
+				fAspectRatio,
+				120.f,
+				0.0f,
+				1000.0f
 			)
 		)
 	);

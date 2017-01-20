@@ -7,6 +7,9 @@
 * Games Programming - Coursework Submission 1 - Game Engine
 */
 
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGHT 720
+
 // Imports
 #include "stdafx.h"
 #include "scene.h"
@@ -19,7 +22,7 @@
 int main()
 {
 	// Instantiates window
-	sf::RenderWindow window(sf::VideoMode(1280, 720), "Games Programming - Coursework Submission 1 - Game Engine", sf::Style::Default);
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Games Programming - Coursework Submission 1 - Game Engine", sf::Style::Default);
 
 	// Initialises a clock for the update loop
 	sf::Clock clock;
@@ -27,13 +30,14 @@ int main()
 	sf::Time elapsedTime;
 	
 	// Defines scene
-	Scene scene = Scene();
+	Scene scene = Scene((float)(WINDOW_WIDTH/WINDOW_HEIGHT));
 	
 	// While the window is open
 	while (window.isOpen())
 	{
 		// Event object for windows event calls
 		sf::Event event;
+		// Process events
 		while (window.pollEvent(event))
 		{
 			// If Closed event is called
@@ -51,6 +55,17 @@ int main()
 				{
 					// Closes window
 					window.close();
+				}
+			}
+
+			// Resize event : adjust viewport
+			if (event.type == sf::Event::Resized)
+			{
+				gl::Viewport(0, 0, event.size.width, event.size.height);
+
+				for (std::shared_ptr<Camera> camera : scene.getCameras())
+				{
+					camera->resize(float(event.size.width/event.size.height))
 				}
 			}
 		}
@@ -72,10 +87,7 @@ int main()
 		window.clear(sf::Color(0, 0, 0, 255));
 
 		// Draws the Scene
-		window.draw(scene.getActiveCamera()->getView());
-
-		// Sets the view
-		window.setView();
+		scene.render();
 
 		// Displays the current frame
 		window.display();

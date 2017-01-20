@@ -31,8 +31,10 @@ public:
 	///
 	/// \brief Constructor
 	///
+	/// \param fAspectRatio The window aspect ratio
+	///
 	///////////////////////////////////////////////// 
-	Scene();
+	Scene(float fAspectRatio);
 
 	/////////////////////////////////////////////////
 	///
@@ -49,6 +51,8 @@ public:
 	///
 	///////////////////////////////////////////////// 
 	void render();
+
+	std::vector<std::shared_ptr<Camera>> getCameras() { return m_pCameras; } //!< Returns a vector of Cameras
 };
 
 #endif
