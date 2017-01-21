@@ -8,8 +8,6 @@
 // Constructor
 Scene::Scene(const float kfAspectRatio)
 {
-
-
 	// Pushes new Camera pointer onto vector of Cameras
 	// Camera #1
 	m_pCameras.push_back
