@@ -2,18 +2,16 @@
 #define CAMERA_H
 
 // Imports
-#include <memory>
-#include <string>
-#include "glm.hpp"
-#include "gl_core_4_3.hpp"
-
-#include "gtc\matrix_transform.hpp"
-#include "gtc\type_ptr.hpp"
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <memory>
+#include <string>
+#include "glm.hpp"
+#include "gtc\matrix_transform.hpp"
+#include "gtc\type_ptr.hpp"
+
 
 /////////////////////////////////////////////////
 ///

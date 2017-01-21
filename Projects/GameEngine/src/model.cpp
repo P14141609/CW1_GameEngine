@@ -3,7 +3,6 @@
 */
 
 // Imports
-#include "stdafx.h"
 #include "model.h"
 
 // Constructor
@@ -75,7 +74,7 @@ void Model::loadFromObj(const std::string ksFilePath)
 }
 
 // Void: Initialises Model handles
-void Model::initModel(const float kfPositionData[], const float kfUVData[], const GLuint kIndexData[])
+void Model::initModel()
 {
 	//// Create and populate the buffer objects using separate buffers
 	//gl::GenBuffers(3, m_vboHandles);
@@ -110,9 +109,9 @@ void Model::initModel(const float kfPositionData[], const float kfUVData[], cons
 void Model::initTexture(const std::string ksFilePath)
 {
 	//Load the texture
-	Bitmap bmp = Bitmap::bitmapFromFile(ksFilePath);
-	bmp.flipVertically();
-	m_pTexture = new Texture(bmp);
+	//Bitmap bmp = Bitmap::bitmapFromFile(ksFilePath);
+	//bmp.flipVertically();
+	//m_pTexture = new Texture(bmp);
 }
 
 // Void: Called to render the Model

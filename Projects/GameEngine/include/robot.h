@@ -1,12 +1,12 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
-#include "glm.hpp"
-#include "gl_core_4_3.hpp"
-#include <memory>
-#include <vector>
 #include "camera.h"
 #include "model.h"
+
+#include <memory>
+#include <vector>
+#include "glm.hpp"
 
 class Robot
 {

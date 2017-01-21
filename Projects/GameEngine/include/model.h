@@ -2,15 +2,12 @@
 #define MODEL_H
 
 // Imports
-#include "glm.hpp"
-#include "gl_core_4_3.hpp"
-#include "Texture.h"
+#include "camera.h"
 
-#include <GLFW/glfw3.h>
 #include <memory>
 #include <vector>
+#include "glm.hpp"
 
-#include "camera.h"
 
 /////////////////////////////////////////////////
 ///
@@ -23,7 +20,7 @@ private:
 	glm::vec3 m_position; //!< Model position vector
 	float m_fRotation; //!< Model rotation angle
 
-	Texture* m_pTexture;
+	//Texture* m_pTexture;
 	
 protected:
 
@@ -54,7 +51,7 @@ public:
 	/// \param kIndexData
 	///
 	///////////////////////////////////////////////// 
-	void initModel(const float kfPositionData[], const float kfUVData[], const GLuint kIndexData[]);
+	void initModel();
 
 	/////////////////////////////////////////////////
 	///

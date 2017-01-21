@@ -3,8 +3,8 @@
 
 // Imports
 #include "robot.h"
+
 #include <memory>
-#include <GLFW\glfw3.h>
 
 /////////////////////////////////////////////////
 ///

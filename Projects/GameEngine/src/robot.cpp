@@ -4,7 +4,6 @@
 */
 
 // Imports
-#include "stdafx.h"
 #include "robot.h"
 
 // Constructor

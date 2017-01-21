@@ -3,7 +3,6 @@
 */
 
 // Imports
-#include "stdafx.h"
 #include "scene.h"
 
 // Constructor

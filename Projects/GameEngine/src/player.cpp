@@ -4,8 +4,9 @@
 */
 
 // Imports
-#include "stdafx.h"
 #include "player.h"
+
+#include <SFML\Graphics.hpp>
 
 // Constructor
 Player::Player(const glm::vec3 kPosition, const float kfRotation)
@@ -28,31 +29,31 @@ void Player::processKeyInput(const int kiKey)
 			m_pRobot->m_bArmsMoving = !m_pRobot->m_bArmsMoving;
 			m_pRobot->m_bLegsMoving = !m_pRobot->m_bLegsMoving;
 		} break;
-
+	
 		// If input is Up
 		case sf::Keyboard::Up:
 		{
 			moveForward(0.5f);
 		} break;
-
+	
 		// If input is Down
 		case sf::Keyboard::Down:
 		{
 			moveForward(-0.5f);
 		} break;
-
+	
 		// If input is Left
 		case sf::Keyboard::Left:
 		{
 			m_rotation += 2.5f;
 		} break;
-
+	
 		// If input is Right
 		case sf::Keyboard::Right:
 		{
 			m_rotation += -2.5f;
 		} break;
-
+	
 		// Default case
 		default: break; // Do Nothing
 	}

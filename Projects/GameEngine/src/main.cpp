@@ -7,8 +7,24 @@
 * Games Programming - Coursework Submission 1 - Game Engine
 */
 
+#include <stdio.h>
+#include <tchar.h>
+#include <SFML\glew.h>		
+#include <SFML\OpenGL.hpp>
+#include <SFML\Graphics.hpp>
+#include <SFML\wglext.h>
+#include <SFML\glext.h>
+#include <stdio.h>
+#include <string>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
+#include <cmath>
+#include "glm.hpp"
+
 // Imports
-#include "stdafx.h"
 #include "scene.h"
 
 const unsigned int WINDOW_WIDTH = 1280;
@@ -18,17 +34,16 @@ const unsigned int REFRESH_RATE = 128;
 //!< Entry point for the application
 int main()
 {
-	// SFML-2.3.2 depth buffering fails unless we create a more specific window - as below
 	int depthBits = 24;
 	int stencilBits = 8;
 	int antiAliasingLevel = 8;
-	int majorVersion = 3;
-	int minorVersion = 3;
+	int majorVersion = 4;
+	int minorVersion = 5;
 
 	// Creates the main window
 	sf::ContextSettings context(depthBits, stencilBits, antiAliasingLevel, majorVersion, minorVersion);
 	// Instantiates window
-	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Games Programming - Coursework Submission 1 - Game Engine", sf::Style::Default);
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, 32), "Games Programming - Coursework Submission 1 - Game Engine", 7U, context);
 
 	// Initialises a clock for the update loop
 	sf::Clock clock;
@@ -64,7 +79,7 @@ int main()
 				}
 
 				// Else
-				else 
+				else
 				{
 					// Pass key to Scene for processing
 					scene.processKeyInput(event.key.code);
@@ -74,7 +89,7 @@ int main()
 			// Resize event : adjust viewport
 			if (event.type == sf::Event::Resized)
 			{
-				gl::Viewport(0, 0, event.size.width, event.size.height);
+				glViewport(0, 0, event.size.width, event.size.height);
 
 				for (std::shared_ptr<Camera> camera : scene.getCameras())
 				{
@@ -95,12 +110,16 @@ int main()
 			// Updates the Scene with elapsed time
 			scene.update(elapsedTime.asSeconds());
 		}
-
 		// Clears window making it entirely black
 		window.clear(sf::Color(0, 0, 0, 255));
 
+		window.pushGLStates();
+
 		// Draws the Scene
 		scene.render();
+
+		window.resetGLStates();
+		window.popGLStates();
 
 		// Displays the current frame
 		window.display();
