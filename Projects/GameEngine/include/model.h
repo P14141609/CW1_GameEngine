@@ -4,6 +4,12 @@
 // Imports
 #include "camera.h"
 
+#include <SFML\glew.h>		
+#include <SFML\OpenGL.hpp>
+#include <SFML\Graphics.hpp>
+#include <SFML\wglext.h>
+#include <SFML\glext.h>
+
 #include <memory>
 #include <vector>
 #include "glm.hpp"
