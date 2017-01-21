@@ -39,12 +39,12 @@ public:
 
 	/////////////////////////////////////////////////
 	///
-	/// \brief Processes keyboard input
+	/// \brief Processes input
 	///
-	/// \param kiKey The pressed key
+	/// \param kfElapsedTime The time since last update
 	///
 	///////////////////////////////////////////////// 
-	void processKeyInput(const int kiKey);
+	void processInput(const float kfElapsedTime);
 
 	/////////////////////////////////////////////////
 	///
@@ -62,7 +62,8 @@ public:
 	///////////////////////////////////////////////// 
 	void render();
 
-	std::vector<std::shared_ptr<Camera>> getCameras() { return m_pCameras; } //!< Returns a vector of Cameras
+	std::vector<std::shared_ptr<Camera>> getCameras() { return m_pCameras; } //!< Returns a vector of Camera ptrs
+	std::shared_ptr<Camera> getActiveCamera() { return m_pActiveCamera; } //!< Returns the active Camera ptr
 };
 
 #endif

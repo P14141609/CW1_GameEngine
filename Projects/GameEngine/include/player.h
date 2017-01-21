@@ -38,9 +38,10 @@ public:
 	/// \brief Processes keyboard input
 	///
 	/// \param kiKey The pressed key
+	/// \param kfElapsedTime The time since last update
 	///
 	///////////////////////////////////////////////// 
-	void processKeyInput(const int kiKey);
+	void processKeyInput(const int kiKey, const float kfElapsedTime);
 
 	/////////////////////////////////////////////////
 	///
@@ -66,6 +67,9 @@ public:
 	///
 	///////////////////////////////////////////////// 
 	void render();
+
+	void setPosition(const glm::vec3 kPosition) { m_position = kPosition; } //!< 
+	void setRotation(const float kRotation) { m_rotation = kRotation; } //!< 
 };
 
 #endif

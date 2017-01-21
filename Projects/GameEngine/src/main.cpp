@@ -7,21 +7,15 @@
 * Games Programming - Coursework Submission 1 - Game Engine
 */
 
-#include <stdio.h>
-#include <tchar.h>
+#define GL_GLEXT_PROTOTYPES 1		
+#define GLEW_STATIC
 #include <SFML\glew.h>		
 #include <SFML\OpenGL.hpp>
 #include <SFML\Graphics.hpp>
 #include <SFML\wglext.h>
 #include <SFML\glext.h>
-#include <stdio.h>
-#include <string>
+
 #include <vector>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include <cmath>
 #include "glm.hpp"
 
 // Imports
@@ -29,6 +23,7 @@
 
 const unsigned int WINDOW_WIDTH = 1280;
 const unsigned int WINDOW_HEIGHT = 720;
+const float ASPECT_RATIO = WINDOW_WIDTH / WINDOW_HEIGHT;
 const unsigned int REFRESH_RATE = 128;
 
 //!< Entry point for the application
@@ -43,16 +38,40 @@ int main()
 	// Creates the main window
 	sf::ContextSettings context(depthBits, stencilBits, antiAliasingLevel, majorVersion, minorVersion);
 	// Instantiates window
-	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, 32), "Games Programming - Coursework Submission 1 - Game Engine", 7U, context);
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, 32U), "Games Programming - Coursework Submission 1 - Game Engine", 7U, context);
 
+	// Checks the window settings
+	sf::ContextSettings windowSettings = window.getSettings();
+
+	// Sets up OpenGL after the window is configured
+	// Set color and depth clear value
+	glClearDepth(1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+	
+	// Enable Z-buffer read and write
+	glEnable(GL_DEPTH_TEST);
+	//glDepthFunc(GL_LEQUAL);
+	glDepthMask(GL_TRUE);
+	
+	// Draw single sided faces
+	glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);
+	
+	// Setup a perspective projection
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	
+	// Defines scene
+	Scene scene = Scene(ASPECT_RATIO);
+	
+	// Sets the viewport width and height to reflect the size of the display
+	glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+	
 	// Initialises a clock for the update loop
 	sf::Clock clock;
 	// Declares var to track elapsed time
 	sf::Time elapsedTime;
-	
-	// Defines scene
-	Scene scene = Scene((float)(WINDOW_WIDTH/WINDOW_HEIGHT));
-	
+
 	// While the window is open
 	while (window.isOpen())
 	{
@@ -67,7 +86,7 @@ int main()
 				// Closes window
 				window.close();
 			}
-
+	
 			// If KeyPressed event is called
 			if (event.type == sf::Event::KeyPressed)
 			{
@@ -77,50 +96,50 @@ int main()
 					// Closes window
 					window.close();
 				}
-
-				// Else
-				else
-				{
-					// Pass key to Scene for processing
-					scene.processKeyInput(event.key.code);
-				}
 			}
-
+	
 			// Resize event : adjust viewport
 			if (event.type == sf::Event::Resized)
 			{
+				// Updates the viewport to reflect the size of the display
 				glViewport(0, 0, event.size.width, event.size.height);
-
+	
 				for (std::shared_ptr<Camera> camera : scene.getCameras())
 				{
-					camera->resize(float(event.size.width / event.size.height));
+					// Updates the aspect ratio of every Camera in the Scene
+					camera->setAspectRatio(float(event.size.width / event.size.height));
 				}
 			}
 		}
-
+	
 		// Gets elapsed time from clock
 		elapsedTime = clock.getElapsedTime();
-
+	
 		// Triggers the update loop REFRESH_RATE times a second
 		if (elapsedTime.asMilliseconds() > 1000 / REFRESH_RATE)
 		{
 			// Restarts the clock
 			clock.restart();
-
+	
 			// Updates the Scene with elapsed time
 			scene.update(elapsedTime.asSeconds());
 		}
+		
 		// Clears window making it entirely black
-		window.clear(sf::Color(0, 0, 0, 255));
-
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
 		window.pushGLStates();
-
+	
+		// Apply some transformations
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		
 		// Draws the Scene
 		scene.render();
-
+	
 		window.resetGLStates();
 		window.popGLStates();
-
+	
 		// Displays the current frame
 		window.display();
 	}

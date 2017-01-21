@@ -18,7 +18,7 @@ Player::Player(const glm::vec3 kPosition, const float kfRotation)
 }
 
 // Void: Processes keyboard input
-void Player::processKeyInput(const int kiKey)
+void Player::processKeyInput(const int kiKey, const float kfElapsedTime)
 {
 	switch (kiKey)
 	{
@@ -32,26 +32,30 @@ void Player::processKeyInput(const int kiKey)
 	
 		// If input is Up
 		case sf::Keyboard::Up:
+		case sf::Keyboard::W:
 		{
-			moveForward(0.5f);
+			moveForward(8.0f * kfElapsedTime);
 		} break;
 	
 		// If input is Down
 		case sf::Keyboard::Down:
+		case sf::Keyboard::S:
 		{
-			moveForward(-0.5f);
+			moveForward(-8.0f * kfElapsedTime);
 		} break;
 	
 		// If input is Left
 		case sf::Keyboard::Left:
+		case sf::Keyboard::A:
 		{
-			m_rotation += 2.5f;
+			m_rotation += 90.0f * kfElapsedTime;
 		} break;
 	
 		// If input is Right
 		case sf::Keyboard::Right:
+		case sf::Keyboard::D:
 		{
-			m_rotation += -2.5f;
+			m_rotation += -90.0f * kfElapsedTime;
 		} break;
 	
 		// Default case
@@ -79,5 +83,11 @@ void Player::update(const float kfElapsedTime)
 // Void: Called to render the Player model
 void Player::render()
 {
-	m_pRobot->draw(m_position, m_rotation);
+	glEnable(GL_COLOR_MATERIAL);
+		glDisable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+		m_pRobot->draw(m_position, m_rotation);
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+	glDisable(GL_COLOR_MATERIAL);
 }

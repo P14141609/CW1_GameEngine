@@ -4,6 +4,12 @@
 #include "camera.h"
 #include "model.h"
 
+#include <SFML\glew.h>		
+#include <SFML\OpenGL.hpp>
+#include <SFML\Graphics.hpp>
+#include <SFML\wglext.h>
+#include <SFML\glext.h>
+
 #include <memory>
 #include <vector>
 #include "glm.hpp"
@@ -60,6 +66,12 @@ public:
 	///
 	///////////////////////////////////////////////// 
 	void draw(const glm::vec3 kPosition, const float kfRotation);
-};
 
+	void drawCube(const glm::vec3 kPosition); //!< 
+	void drawArm(const glm::vec3 kPosition); //!< 
+	void drawHead(const glm::vec3 kPosition); //!< 
+	void drawTorso(const glm::vec3 kPosition); //!< 
+	void drawLeg(const glm::vec3 kPosition); //!< 
+	void drawFoot(const glm::vec3 kPosition); //!< 
+};
 #endif
