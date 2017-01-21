@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|x64">
+    <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
-      <Platform>x64</Platform>
+      <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|x64">
+    <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
-      <Platform>x64</Platform>
+      <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -17,17 +17,12 @@
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <PlatformToolset>v140</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -35,105 +30,47 @@
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)temp\$(Configuration)\</IntDir>
-    <ExecutablePath>$(VC_ExecutablePath_x64);$(WindowsSDK_ExecutablePath);$(VS_ExecutablePath);$(MSBuild_ExecutablePath);$(FxCopDir);$(PATH);</ExecutablePath>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64;</LibraryPath>
-    <SourcePath>$(VC_SourcePath);</SourcePath>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IntDir>$(ProjectDir)temp\$(Configuration)\</IntDir>
-    <ExecutablePath>$(VC_ExecutablePath_x64);$(WindowsSDK_ExecutablePath);$(VS_ExecutablePath);$(MSBuild_ExecutablePath);$(FxCopDir);$(PATH);</ExecutablePath>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
-    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64;</LibraryPath>
-    <SourcePath>$(VC_SourcePath);</SourcePath>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Create</PrecompiledHeader>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\stb_image\stb_image;$(SolutionDir)include\GLFW\glfw-3.2.1.bin.WIN64\include;$(SolutionDir)include\glm\glm;$(SolutionDir)include;$(ProjectDir)include;$(SolutionDir)include\GLLoadGen\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\SFML-2.4.1\include;$(SolutionDir)include\glm\glm;$(SolutionDir)include;$(ProjectDir)include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)include\GLFW\glfw-3.2.1.bin.WIN64\lib-vc2015;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalOptions>/NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
-      <ShowProgress>NotSet</ShowProgress>
-      <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>$(SolutionDir)include\SFML-2.4.1\lib;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>User32.lib;gdi32.lib;winmm.lib;glew32s.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-network-d.lib;sfml-audio-d.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>Create</PrecompiledHeader>
-      <Optimization>MaxSpeed</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(SolutionDir)include\stb_image\stb_image;$(SolutionDir)include\GLFW\glfw-3.2.1.bin.WIN64\include;$(SolutionDir)include\glm\glm;$(SolutionDir)include;$(ProjectDir)include;$(SolutionDir)include\GLLoadGen\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include\SFML-2.4.1\include;$(SolutionDir)include\glm\glm;$(SolutionDir)include;$(ProjectDir)include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)include\GLFW\glfw-3.2.1.bin.WIN64\lib-vc2015;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalOptions>/NODEFAULTLIB:MSVCRT %(AdditionalOptions)</AdditionalOptions>
-      <ShowProgress>NotSet</ShowProgress>
-      <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>$(SolutionDir)include\SFML-2.4.1\lib;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>User32.lib;gdi32.lib;winmm.lib;glew32s.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-network-d.lib;sfml-audio-d.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\include\GLLoadGen\source\gl_core_4_3.cpp" />
-    <ClCompile Include="src\Bitmap.cpp" />
     <ClCompile Include="src\camera.cpp" />
-    <ClCompile Include="src\glslprogram.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\model.cpp" />
-    <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\robot.cpp" />
-    <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\scene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\GLLoadGen\include\gl_core_4_3.hpp" />
-    <ClInclude Include="include\Bitmap.h" />
     <ClInclude Include="include\camera.h" />
-    <ClInclude Include="include\glslprogram.h" />
     <ClInclude Include="include\model.h" />
-    <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\player.h" />
     <ClInclude Include="include\robot.h" />
-    <ClInclude Include="include\Texture.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="res\Shaders\basic.frag" />
-    <None Include="res\Shaders\basic.vert" />
-    <None Include="res\Shaders\cubemap.frag" />
-    <None Include="res\Shaders\cubemap.vert" />
-    <None Include="res\Shaders\reflection.frag" />
-    <None Include="res\Shaders\reflection.vert" />
-    <None Include="res\Shaders\refraction.frag" />
-    <None Include="res\Shaders\refraction.vert" />
+    <ClInclude Include="include\scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

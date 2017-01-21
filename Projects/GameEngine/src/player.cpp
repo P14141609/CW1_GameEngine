@@ -4,8 +4,9 @@
 */
 
 // Imports
-#include "stdafx.h"
 #include "player.h"
+
+#include <SFML\Graphics.hpp>
 
 // Constructor
 Player::Player(const glm::vec3 kPosition, const float kfRotation)
@@ -17,42 +18,46 @@ Player::Player(const glm::vec3 kPosition, const float kfRotation)
 }
 
 // Void: Processes keyboard input
-void Player::processKeyInput(const int kiKey)
+void Player::processKeyInput(const int kiKey, const float kfElapsedTime)
 {
 	switch (kiKey)
 	{
-		// If input is GLFW_KEY_SPACE
-		case GLFW_KEY_SPACE:
+		// If input is Spacebar
+		case sf::Keyboard::Space:
 		{
 			// Inverts the current bool values for limb movement
 			m_pRobot->m_bArmsMoving = !m_pRobot->m_bArmsMoving;
 			m_pRobot->m_bLegsMoving = !m_pRobot->m_bLegsMoving;
 		} break;
-
-		// If input is GLFW_KEY_UP
-		case GLFW_KEY_UP:
+	
+		// If input is Up
+		case sf::Keyboard::Up:
+		case sf::Keyboard::W:
 		{
-			moveForward(0.5f);
+			moveForward(8.0f * kfElapsedTime);
 		} break;
-
-		// If input is GLFW_KEY_DOWN
-		case GLFW_KEY_DOWN:
+	
+		// If input is Down
+		case sf::Keyboard::Down:
+		case sf::Keyboard::S:
 		{
-			moveForward(-0.5f);
+			moveForward(-8.0f * kfElapsedTime);
 		} break;
-
-		// If input is GLFW_KEY_LEFT
-		case GLFW_KEY_LEFT:
+	
+		// If input is Left
+		case sf::Keyboard::Left:
+		case sf::Keyboard::A:
 		{
-			m_rotation += 2.5f;
+			m_rotation += 90.0f * kfElapsedTime;
 		} break;
-
-		// If input is GLFW_KEY_RIGHT
-		case GLFW_KEY_RIGHT:
+	
+		// If input is Right
+		case sf::Keyboard::Right:
+		case sf::Keyboard::D:
 		{
-			m_rotation += -2.5f;
+			m_rotation += -90.0f * kfElapsedTime;
 		} break;
-
+	
 		// Default case
 		default: break; // Do Nothing
 	}
@@ -76,7 +81,13 @@ void Player::update(const float kfElapsedTime)
 }
 
 // Void: Called to render the Player model
-void Player::render(const std::shared_ptr<Camera> kCamera)
+void Player::render()
 {
-	m_pRobot->draw(kCamera, m_position, m_rotation);
+	glEnable(GL_COLOR_MATERIAL);
+		glDisable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+		m_pRobot->draw(m_position, m_rotation);
+		glEnable(GL_CULL_FACE);
+		glCullFace(GL_BACK);
+	glDisable(GL_COLOR_MATERIAL);
 }

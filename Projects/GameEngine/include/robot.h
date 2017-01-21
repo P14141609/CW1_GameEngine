@@ -1,12 +1,18 @@
 #ifndef ROBOT_H
 #define ROBOT_H
 
-#include "glm.hpp"
-#include "gl_core_4_3.hpp"
-#include <memory>
-#include <vector>
 #include "camera.h"
 #include "model.h"
+
+#include <SFML\glew.h>		
+#include <SFML\OpenGL.hpp>
+#include <SFML\Graphics.hpp>
+#include <SFML\wglext.h>
+#include <SFML\glext.h>
+
+#include <memory>
+#include <vector>
+#include "glm.hpp"
 
 class Robot
 {
@@ -55,12 +61,17 @@ public:
 	///
 	/// \brief Called to render the Robot model
 	///
-	/// \param kCamera Camera pointer to use in rendering
 	/// \param kPosition Vector for Robot position
 	/// \param kfRotation Float for Robot rotation angle
 	///
 	///////////////////////////////////////////////// 
-	void draw(const std::shared_ptr<Camera> kCamera, const glm::vec3 kPosition, const float kfRotation);
-};
+	void draw(const glm::vec3 kPosition, const float kfRotation);
 
+	void drawCube(const glm::vec3 kPosition); //!< 
+	void drawArm(const glm::vec3 kPosition); //!< 
+	void drawHead(const glm::vec3 kPosition); //!< 
+	void drawTorso(const glm::vec3 kPosition); //!< 
+	void drawLeg(const glm::vec3 kPosition); //!< 
+	void drawFoot(const glm::vec3 kPosition); //!< 
+};
 #endif

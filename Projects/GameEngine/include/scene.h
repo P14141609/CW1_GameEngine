@@ -5,6 +5,7 @@
 #include "player.h"
 #include "model.h"
 #include "camera.h"
+
 #include <memory>
 #include <vector>
 
@@ -31,8 +32,19 @@ public:
 	///
 	/// \brief Constructor
 	///
+	/// \param kfAspectRatio The window aspect ratio
+	///
 	///////////////////////////////////////////////// 
-	Scene();
+	Scene(const float kfAspectRatio);
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Processes input
+	///
+	/// \param kfElapsedTime The time since last update
+	///
+	///////////////////////////////////////////////// 
+	void processInput(const float kfElapsedTime);
 
 	/////////////////////////////////////////////////
 	///
@@ -49,6 +61,9 @@ public:
 	///
 	///////////////////////////////////////////////// 
 	void render();
+
+	std::vector<std::shared_ptr<Camera>> getCameras() { return m_pCameras; } //!< Returns a vector of Camera ptrs
+	std::shared_ptr<Camera> getActiveCamera() { return m_pActiveCamera; } //!< Returns the active Camera ptr
 };
 
 #endif

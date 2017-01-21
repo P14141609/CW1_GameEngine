@@ -2,20 +2,16 @@
 #define CAMERA_H
 
 // Imports
-#include <memory>
-#include <string>
-#include "glm.hpp"
-#include "gl_core_4_3.hpp"
-
-#include "gtc\matrix_transform.hpp"
-#include "gtc\type_ptr.hpp"
-
-#include "glslprogram.h"
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <memory>
+#include <string>
+#include "glm.hpp"
+#include "gtc\matrix_transform.hpp"
+#include "gtc\type_ptr.hpp"
+
 
 /////////////////////////////////////////////////
 ///
@@ -25,18 +21,14 @@
 class Camera
 {
 private:
-	glm::mat4 m_view; //!< Matrix for the camera view
-	glm::mat4 m_perspective; //!< Matrix for the camera perspective
-	GLSLProgram m_shader; //!< Shader program
+	float m_fFOV; //!< Camera field of view
+	float m_fAspectRatio; //!< Camera display aspect ratio
+	float m_fNear; //!< Camera near clipping distance
+	float m_fFar; //!< Camera far clipping distance
 
-	/////////////////////////////////////////////////
-	///
-	/// \brief Constructor
-	///
-	/// \param ksShaderFile Path to the shader files
-	///
-	///////////////////////////////////////////////// 
-	void initShader(const std::string ksShaderFile);
+	glm::vec3 m_position; //!< Vector for the Camera position
+	glm::vec3 m_direction; //!< Vector for the Camera direction
+	glm::vec3 m_up; //!< Vector for the Camera's 'Up'
 
 public:
 
@@ -44,17 +36,32 @@ public:
 	///
 	/// \brief Constructor
 	///
-	/// \param ksShaderFile Path to the shader files 
 	/// \param kPosition Position of the Camera
-	/// \param kTargetPos Position the Camera is aimed at
-	/// \param kPerspective Camera perspective settings
+	/// \param kDirection Direction of the Camera
+	/// \param kfAspectRatio
+	/// \param kfFOV
+	/// \param kfNear
+	/// \param kfFar
 	///
 	///////////////////////////////////////////////// 
-	Camera(const std::string ksShaderFile, glm::vec3 kPosition, const glm::vec3 kTargetPos, const glm::mat4 kPerspective);
+	Camera(const glm::vec3 kPosition, const glm::vec3 kDirection, const float kfFOV, const float kfAspectRatio, const float kfNear, const float kfFar);
 
-	glm::mat4 getView() { return m_view; }; //!< Returns the view matrix
-	glm::mat4 getPerspective() { return m_perspective; }; //!< Returns the perspective matrix
-	GLuint getShaderHandle() { return m_shader.getHandle(); }; //!< Returns the shader program handle
+	/////////////////////////////////////////////////
+	///
+	/// \brief 
+	///
+	/// \param kfAspectRatio
+	///
+	///////////////////////////////////////////////// 
+	void setAspectRatio(const float kfAspectRatio) { m_fAspectRatio = kfAspectRatio; };
+
+	glm::vec3 getPosition() { return m_position; }; //!< Returns the Camera's position
+	glm::vec3 getDirection() { return m_direction; }; //!< Returns the Camera's direction
+	glm::vec3 getUp() { return m_up; } //!< Returns the Camera's 'up'
+	float getFOV() { return m_fFOV; }; //!< Returns the Camera's field of view
+	float getAspectRatio() { return m_fAspectRatio; }; //!< Returns the Camera's display aspect ratio
+	float getNear() { return m_fNear; }; //!< Returns the Camera's near clipping distance
+	float getFar() { return m_fFar; }; //!< Returns the Camera's far clipping distance
 };
 
 #endif

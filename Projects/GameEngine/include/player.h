@@ -3,8 +3,8 @@
 
 // Imports
 #include "robot.h"
+
 #include <memory>
-#include <GLFW\glfw3.h>
 
 /////////////////////////////////////////////////
 ///
@@ -38,9 +38,10 @@ public:
 	/// \brief Processes keyboard input
 	///
 	/// \param kiKey The pressed key
+	/// \param kfElapsedTime The time since last update
 	///
 	///////////////////////////////////////////////// 
-	void processKeyInput(const int kiKey);
+	void processKeyInput(const int kiKey, const float kfElapsedTime);
 
 	/////////////////////////////////////////////////
 	///
@@ -64,10 +65,11 @@ public:
 	///
 	/// \brief Called to render the Player model
 	///
-	/// \param kCamera Camera pointer to use in rendering
-	///
 	///////////////////////////////////////////////// 
-	void render(const std::shared_ptr<Camera> kCamera);
+	void render();
+
+	void setPosition(const glm::vec3 kPosition) { m_position = kPosition; } //!< 
+	void setRotation(const float kRotation) { m_rotation = kRotation; } //!< 
 };
 
 #endif
