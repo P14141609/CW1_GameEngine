@@ -31,10 +31,19 @@ public:
 	///
 	/// \brief Constructor
 	///
-	/// \param fAspectRatio The window aspect ratio
+	/// \param kfAspectRatio The window aspect ratio
 	///
 	///////////////////////////////////////////////// 
-	Scene(float fAspectRatio);
+	Scene(const float kfAspectRatio);
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Processes keyboard input
+	///
+	/// \param kiKey The pressed key
+	///
+	///////////////////////////////////////////////// 
+	void processKeyInput(const int kiKey);
 
 	/////////////////////////////////////////////////
 	///

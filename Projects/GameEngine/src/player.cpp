@@ -21,34 +21,34 @@ void Player::processKeyInput(const int kiKey)
 {
 	switch (kiKey)
 	{
-		// If input is GLFW_KEY_SPACE
-		case GLFW_KEY_SPACE:
+		// If input is Spacebar
+		case sf::Keyboard::Space:
 		{
 			// Inverts the current bool values for limb movement
 			m_pRobot->m_bArmsMoving = !m_pRobot->m_bArmsMoving;
 			m_pRobot->m_bLegsMoving = !m_pRobot->m_bLegsMoving;
 		} break;
 
-		// If input is GLFW_KEY_UP
-		case GLFW_KEY_UP:
+		// If input is Up
+		case sf::Keyboard::Up:
 		{
 			moveForward(0.5f);
 		} break;
 
-		// If input is GLFW_KEY_DOWN
-		case GLFW_KEY_DOWN:
+		// If input is Down
+		case sf::Keyboard::Down:
 		{
 			moveForward(-0.5f);
 		} break;
 
-		// If input is GLFW_KEY_LEFT
-		case GLFW_KEY_LEFT:
+		// If input is Left
+		case sf::Keyboard::Left:
 		{
 			m_rotation += 2.5f;
 		} break;
 
-		// If input is GLFW_KEY_RIGHT
-		case GLFW_KEY_RIGHT:
+		// If input is Right
+		case sf::Keyboard::Right:
 		{
 			m_rotation += -2.5f;
 		} break;

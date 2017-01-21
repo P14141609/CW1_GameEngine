@@ -10,6 +10,9 @@
 #include <stdio.h>
 #include <tchar.h>
 
-
-
 // TODO: reference additional headers your program requires here
+
+// SFML
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Window.hpp>

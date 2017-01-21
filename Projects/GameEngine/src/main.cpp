@@ -7,20 +7,26 @@
 * Games Programming - Coursework Submission 1 - Game Engine
 */
 
-#define WINDOW_WIDTH 1280
-#define WINDOW_HEIGHT 720
-
 // Imports
 #include "stdafx.h"
 #include "scene.h"
-// SFML
-#include <SFML/Graphics.hpp>
-#include <SFML/System.hpp>
-#include <SFML/Window.hpp>
+
+const unsigned int WINDOW_WIDTH = 1280;
+const unsigned int WINDOW_HEIGHT = 720;
+const unsigned int REFRESH_RATE = 128;
 
 //!< Entry point for the application
 int main()
 {
+	// SFML-2.3.2 depth buffering fails unless we create a more specific window - as below
+	int depthBits = 24;
+	int stencilBits = 8;
+	int antiAliasingLevel = 8;
+	int majorVersion = 3;
+	int minorVersion = 3;
+
+	// Creates the main window
+	sf::ContextSettings context(depthBits, stencilBits, antiAliasingLevel, majorVersion, minorVersion);
 	// Instantiates window
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "Games Programming - Coursework Submission 1 - Game Engine", sf::Style::Default);
 
@@ -56,6 +62,13 @@ int main()
 					// Closes window
 					window.close();
 				}
+
+				// Else
+				else 
+				{
+					// Pass key to Scene for processing
+					scene.processKeyInput(event.key.code);
+				}
 			}
 
 			// Resize event : adjust viewport
@@ -65,7 +78,7 @@ int main()
 
 				for (std::shared_ptr<Camera> camera : scene.getCameras())
 				{
-					camera->resize(float(event.size.width/event.size.height))
+					camera->resize(float(event.size.width / event.size.height));
 				}
 			}
 		}
@@ -73,8 +86,8 @@ int main()
 		// Gets elapsed time from clock
 		elapsedTime = clock.getElapsedTime();
 
-		// Triggers the update loop 128 times a second
-		if (elapsedTime.asMilliseconds() > 1000 / 128)
+		// Triggers the update loop REFRESH_RATE times a second
+		if (elapsedTime.asMilliseconds() > 1000 / REFRESH_RATE)
 		{
 			// Restarts the clock
 			clock.restart();
