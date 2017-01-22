@@ -21,8 +21,11 @@ public:
 	///
 	/// \brief Constructor
 	///
+	/// \param kPosition Vector for StaticObject position
+	/// \param kfRotation Float for StaticObject rotation angle
+	///
 	///////////////////////////////////////////////// 
-	StaticObject();
+	StaticObject(const glm::vec3 kPosition, const float kfRotation);
 
 	/////////////////////////////////////////////////
 	///

@@ -15,7 +15,7 @@ class GameObject
 protected:
 
 	glm::vec3 m_position; //!< Position vector
-	float m_rotation; //!< Rotation angle
+	float m_fRotation; //!< Rotation angle
 
 	std::shared_ptr<Model> m_pModel; //!< Model for rendering
 

@@ -21,8 +21,11 @@ public:
 	///
 	/// \brief Constructor
 	///
+	/// \param kPosition Vector for Collectable position
+	/// \param kfRotation Float for Collectable rotation angle
+	///
 	///////////////////////////////////////////////// 
-	Collectable();
+	Collectable(const glm::vec3 kPosition, const float kfRotation);
 
 	/////////////////////////////////////////////////
 	///
