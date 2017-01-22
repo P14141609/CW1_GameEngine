@@ -1,0 +1,28 @@
+#ifndef STATICOBJECT_H
+#define STATICOBJECT_H
+
+// Imports
+#include "gameobject.h"
+
+/////////////////////////////////////////////////
+///
+/// \brief Class for static object handling
+/// 
+/////////////////////////////////////////////////
+class StaticObject : public GameObject
+{
+private:
+	
+protected:
+
+public:
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Constructor
+	///
+	///////////////////////////////////////////////// 
+	StaticObject();
+};
+
+#endif

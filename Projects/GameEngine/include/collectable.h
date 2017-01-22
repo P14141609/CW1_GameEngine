@@ -1,0 +1,28 @@
+#ifndef COLLECTABLE_H
+#define COLLECTABLE_H
+
+// Imports
+#include "gameobject.h"
+
+/////////////////////////////////////////////////
+///
+/// \brief Class for Collectable object handling
+/// 
+/////////////////////////////////////////////////
+class Collectable : public GameObject
+{
+private:
+
+protected:
+
+public:
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Constructor
+	///
+	///////////////////////////////////////////////// 
+	Collectable();
+};
+
+#endif
