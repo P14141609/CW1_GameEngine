@@ -30,12 +30,13 @@ public:
 
 	/////////////////////////////////////////////////
 	///
-	/// \brief Loads a .obj and returns the data
+	/// \brief Loads a .obj and binds the data to the input variable
 	///
 	/// \param ksObjectFile The file path to an object file
+	/// \param modelData A modelData object pointer
 	///
 	///////////////////////////////////////////////// 
-	static ModelData loadObj(const std::string ksObjectFile);
+	static void loadObj(const std::string ksObjectFile, ModelData &modelData);
 };
 
 #endif

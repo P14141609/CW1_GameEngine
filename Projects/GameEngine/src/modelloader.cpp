@@ -6,7 +6,7 @@
 #include "modelloader.h"
 
 // Constructor
-ModelData ModelLoader::loadObj(const std::string ksObjectFile)
+void ModelLoader::loadObj(const std::string ksObjectFile, ModelData &modelData)
 {
 	std::fstream modelfile(ksObjectFile, std::ios_base::in);
 
@@ -19,8 +19,6 @@ ModelData ModelLoader::loadObj(const std::string ksObjectFile)
 	{
 		std::cerr << "Model \"" << ksObjectFile << "\" successfully loaded." << std::endl;
 	}
-
-	ModelData modelData;
 
 	std::vector<float> vertices;
 	std::vector<float> vertexNormals;
@@ -160,6 +158,4 @@ ModelData ModelLoader::loadObj(const std::string ksObjectFile)
 	}
 
 	modelfile.close();
-
-	return modelData;
 }

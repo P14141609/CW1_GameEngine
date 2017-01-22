@@ -13,7 +13,7 @@ Model::Model(const std::string ksObjectFile, const std::string ksTextureFile, co
 	m_position = kPosition;
 	m_fRotation = kfRotation;
 
-	m_modelData = ModelLoader::loadObj(ksObjectFile);
+	ModelLoader::loadObj(ksObjectFile, m_modelData);
 	TextureLoader::loadBMP(ksTextureFile, m_textureID);
 }
 
