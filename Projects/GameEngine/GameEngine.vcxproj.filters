@@ -80,9 +80,6 @@
     <Filter Include="Header Files">
       <UniqueIdentifier>{0b1b9eef-ec43-4156-9102-6b638267d1aa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{4d5642a2-d521-44eb-bba4-de21baf76240}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files">
       <UniqueIdentifier>{6980f5a7-efe5-4340-ac2d-cff62e7173fa}</UniqueIdentifier>
     </Filter>
@@ -121,6 +118,9 @@
     </Filter>
     <Filter Include="Source Files\Scene\Objects">
       <UniqueIdentifier>{00309a25-aa3a-4000-bcd2-4ad6cafb7352}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{4d5642a2-d521-44eb-bba4-de21baf76240}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
