@@ -29,9 +29,6 @@ private:
 
 	std::string m_sObjectFile; //!< Holds the object file path
 
-	glm::vec3 m_position; //!< Model position vector
-	float m_fRotation; //!< Model rotation angle
-
 	ModelData m_modelData; //!< Stores Model data for rendering
 	GLuint m_textureID; //!< Model Texture handle
 
@@ -45,18 +42,19 @@ public:
 	///
 	/// \param ksObjectFile The file path to an object file
 	/// \param ksTextureFile The file path to an image file
-	/// \param kPosition Vector for Model position
-	/// \param kfRotation Float for Model rotation angle
 	///
 	///////////////////////////////////////////////// 
-	Model(const std::string ksObjectFile, const std::string ksTextureFile, const glm::vec3 kPosition, const float kfRotation);
+	Model(const std::string ksObjectFile, const std::string ksTextureFile);
 
 	/////////////////////////////////////////////////
 	///
 	/// \brief Called to render the Model
 	///
+	/// \param kPosition Vector for Model position
+	/// \param kfRotation Float for Model rotation angle
+	///
 	///////////////////////////////////////////////// 
-	void render();
+	void render(const glm::vec3 kPosition, const float kfRotation);
 };
 
 #endif

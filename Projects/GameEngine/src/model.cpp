@@ -6,24 +6,21 @@
 #include "model.h"
 
 // Constructor
-Model::Model(const std::string ksObjectFile, const std::string ksTextureFile, const glm::vec3 kPosition, const float kfRotation)
+Model::Model(const std::string ksObjectFile, const std::string ksTextureFile)
 {
 	m_sObjectFile = ksObjectFile;
-
-	m_position = kPosition;
-	m_fRotation = kfRotation;
 
 	ModelLoader::loadObj(ksObjectFile, m_modelData);
 	TextureLoader::loadBMP(ksTextureFile, m_textureID);
 }
 
 // Void: Called to render the Model
-void Model::render()
+void Model::render(const glm::vec3 kPosition, const float kfRotation)
 {
 	glPushMatrix();
 
-		glTranslatef(m_position.x, m_position.y, m_position.z);
-		glRotatef(m_fRotation, false, true, false);
+		glTranslatef(kPosition.x, kPosition.y, kPosition.z);
+		glRotatef(kfRotation, false, true, false);
 
 		// activate and specify pointer to vertex array
 		glEnableClientState(GL_VERTEX_ARRAY);

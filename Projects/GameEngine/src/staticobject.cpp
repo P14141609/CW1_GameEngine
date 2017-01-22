@@ -10,8 +10,10 @@ StaticObject::StaticObject()
 {
 	// TODO
 }
+
 // Void: Called to render the StaticObject
 void StaticObject::render()
 {
-	// TODO
+	// Renders the GameObject's Model
+	m_pModel->render(m_position, m_rotation);
 }

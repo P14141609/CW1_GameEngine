@@ -2,7 +2,8 @@
 #define GAMEOBJECT_H
 
 // Imports
-//
+#include "model.h"
+#include "glm.hpp"
 
 /////////////////////////////////////////////////
 ///
@@ -14,6 +15,11 @@ class GameObject
 private:
 
 protected:
+
+	glm::vec3 m_position; //!< GameObject position vector
+	float m_rotation; //!< GameObject rotation angle
+
+	std::shared_ptr<Model> m_pModel; //!< The GameObject's Model for rendering
 
 public:
 

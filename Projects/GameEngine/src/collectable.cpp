@@ -14,5 +14,6 @@ Collectable::Collectable()
 // Void: Called to render the Collectable
 void Collectable::render()
 {
-	// TODO
+	// Renders the GameObject's Model
+	m_pModel->render(m_position, m_rotation);
 }

@@ -31,21 +31,21 @@ Scene::Scene(const float kfAspectRatio)
 
 	// Pushes new GameObject pointer onto vector of GameObjects
 	// GameObject #1
-	m_pGameObjects.push_back
-	(
-		std::shared_ptr<GameObject>
-		(
-			new Collectable()
-		)
-	);
+	//m_pGameObjects.push_back
+	//(
+	//	std::shared_ptr<GameObject>
+	//	(
+	//		new Collectable()
+	//	)
+	//);
 	// GameObject #2
-	m_pGameObjects.push_back
-	(
-		std::shared_ptr<GameObject>
-		(
-			new StaticObject()
-		)
-	);
+	//m_pGameObjects.push_back
+	//(
+	//	std::shared_ptr<GameObject>
+	//	(
+	//		new StaticObject()
+	//	)
+	//);
 
 	// Sets display perspective setting
 	gluPerspective(m_pActiveCamera->getFOV(), m_pActiveCamera->getAspectRatio(), m_pActiveCamera->getNear(), m_pActiveCamera->getFar());
