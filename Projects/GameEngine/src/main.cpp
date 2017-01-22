@@ -104,10 +104,10 @@ int main()
 				// Updates the viewport to reflect the size of the display
 				glViewport(0, 0, event.size.width, event.size.height);
 	
-				for (std::shared_ptr<Camera> camera : scene.getCameras())
+				for (std::shared_ptr<Camera> pCamera : scene.getCameras())
 				{
 					// Updates the aspect ratio of every Camera in the Scene
-					camera->setAspectRatio(float(event.size.width / event.size.height));
+					pCamera->setAspectRatio(float(event.size.width / event.size.height));
 				}
 			}
 		}

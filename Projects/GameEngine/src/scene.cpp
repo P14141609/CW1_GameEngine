@@ -65,8 +65,13 @@ void Scene::processInput(const float kfElapsedTime)
 // Void: Called to update the Scene
 void Scene::update(const float kfElapsedTime)
 {
+	// Processes input
 	processInput(kfElapsedTime);
 
+	// Configures all light sources
+	for (std::shared_ptr<Light> pLight : m_pLights) pLight->configureGL();
+
+	// Updates the Player
 	m_player.update(kfElapsedTime);
 }
 
