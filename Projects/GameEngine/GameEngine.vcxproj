@@ -64,32 +64,34 @@
   <ItemGroup>
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\collectable.cpp" />
+<<<<<<< HEAD
+    <ClCompile Include="src\gameobject.cpp" />
+=======
     <ClCompile Include="src\imageloader.cpp" />
+>>>>>>> master
     <ClCompile Include="src\light.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\model.cpp" />
-    <ClCompile Include="src\objectloader.cpp" />
+    <ClCompile Include="src\modelloader.cpp" />
     <ClCompile Include="src\player.cpp" />
     <ClCompile Include="src\robot.cpp" />
     <ClCompile Include="src\scene.cpp" />
     <ClCompile Include="src\staticobject.cpp" />
-    <ClCompile Include="src\texture.cpp" />
+    <ClCompile Include="src\textureloader.cpp" />
     <ClCompile Include="src\xmlloader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\camera.h" />
     <ClInclude Include="include\collectable.h" />
     <ClInclude Include="include\gameobject.h" />
-    <ClInclude Include="include\imageloader.h" />
     <ClInclude Include="include\light.h" />
-    <ClInclude Include="include\loader.h" />
     <ClInclude Include="include\model.h" />
-    <ClInclude Include="include\objectloader.h" />
+    <ClInclude Include="include\modelloader.h" />
     <ClInclude Include="include\player.h" />
     <ClInclude Include="include\robot.h" />
     <ClInclude Include="include\scene.h" />
     <ClInclude Include="include\staticobject.h" />
-    <ClInclude Include="include\texture.h" />
+    <ClInclude Include="include\textureloader.h" />
     <ClInclude Include="include\xmlloader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

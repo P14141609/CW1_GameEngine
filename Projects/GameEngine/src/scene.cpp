@@ -35,6 +35,9 @@ Scene::Scene(const float kfAspectRatio)
 	(
 		std::shared_ptr<GameObject>
 		(
+<<<<<<< HEAD
+			new Model("", "", glm::vec3(0.0f, 0.0f, 0.0f), 0.0f)
+=======
 			new Collectable()
 		)
 	);
@@ -44,6 +47,7 @@ Scene::Scene(const float kfAspectRatio)
 		std::shared_ptr<GameObject>
 		(
 			new StaticObject()
+>>>>>>> master
 		)
 	);
 

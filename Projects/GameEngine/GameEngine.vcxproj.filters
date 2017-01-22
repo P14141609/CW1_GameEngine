@@ -75,16 +75,20 @@
     <ClCompile Include="src\light.cpp">
       <Filter>Source Files\Scene\Model</Filter>
     </ClCompile>
+<<<<<<< HEAD
+    <ClCompile Include="src\xmlloader.cpp">
+=======
     <ClCompile Include="src\texture.cpp">
       <Filter>Source Files\Scene\Model</Filter>
     </ClCompile>
     <ClCompile Include="src\imageloader.cpp">
+>>>>>>> master
       <Filter>Source Files\FileLoading</Filter>
     </ClCompile>
-    <ClCompile Include="src\objectloader.cpp">
+    <ClCompile Include="src\textureloader.cpp">
       <Filter>Source Files\FileLoading</Filter>
     </ClCompile>
-    <ClCompile Include="src\xmlloader.cpp">
+    <ClCompile Include="src\modelloader.cpp">
       <Filter>Source Files\FileLoading</Filter>
     </ClCompile>
   </ItemGroup>
@@ -107,12 +111,6 @@
     <ClInclude Include="include\light.h">
       <Filter>Header Files\Scene\Model</Filter>
     </ClInclude>
-    <ClInclude Include="include\loader.h">
-      <Filter>Header Files\FileLoading</Filter>
-    </ClInclude>
-    <ClInclude Include="include\texture.h">
-      <Filter>Header Files\Scene\Model</Filter>
-    </ClInclude>
     <ClInclude Include="include\gameobject.h">
       <Filter>Header Files\Scene\Object</Filter>
     </ClInclude>
@@ -122,13 +120,13 @@
     <ClInclude Include="include\staticobject.h">
       <Filter>Header Files\Scene\Object</Filter>
     </ClInclude>
-    <ClInclude Include="include\imageloader.h">
-      <Filter>Header Files\FileLoading</Filter>
-    </ClInclude>
-    <ClInclude Include="include\objectloader.h">
-      <Filter>Header Files\FileLoading</Filter>
-    </ClInclude>
     <ClInclude Include="include\xmlloader.h">
+      <Filter>Header Files\FileLoading</Filter>
+    </ClInclude>
+    <ClInclude Include="include\textureloader.h">
+      <Filter>Header Files\FileLoading</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modelloader.h">
       <Filter>Header Files\FileLoading</Filter>
     </ClInclude>
   </ItemGroup>

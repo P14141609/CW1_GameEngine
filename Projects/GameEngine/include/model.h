@@ -3,7 +3,16 @@
 
 // Imports
 #include "camera.h"
+#include "modelloader.h"
+#include "textureloader.h"
 
+#include <SFML\glew.h>		
+#include <SFML\OpenGL.hpp>
+#include <SFML\Graphics.hpp>
+#include <SFML\wglext.h>
+#include <SFML\glext.h>
+
+#include <string>
 #include <memory>
 #include <vector>
 #include "glm.hpp"
@@ -17,11 +26,15 @@
 class Model
 {
 private:
+
+	std::string m_sObjectFile; //!< Holds the object file path
+
 	glm::vec3 m_position; //!< Model position vector
 	float m_fRotation; //!< Model rotation angle
 
-	//Texture* m_pTexture;
-	
+	ModelData m_modelData; //!< Stores Model data for rendering
+	GLuint m_textureID; //!< Model Texture handle
+
 protected:
 
 public:
@@ -30,37 +43,13 @@ public:
 	///
 	/// \brief Constructor
 	///
-	///////////////////////////////////////////////// 
-	Model();
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Loads an obj file into the class
-	///
-	/// \param ksFilePath The file path to a specified .obj file
+	/// \param ksObjectFile The file path to an object file
+	/// \param ksTextureFile The file path to an image file
+	/// \param kPosition Vector for Model position
+	/// \param kfRotation Float for Model rotation angle
 	///
 	///////////////////////////////////////////////// 
-	void loadFromObj(const std::string ksFilePath);
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Initialises Model handles
-	///
-	/// \param kfPositionData
-	/// \param kfUVData
-	/// \param kIndexData
-	///
-	///////////////////////////////////////////////// 
-	void initModel();
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Initialises the Model texture
-	///
-	/// \param ksFilePath The file path to a specified texture file
-	///
-	///////////////////////////////////////////////// 
-	void initTexture(const std::string ksFilePath);
+	Model(const std::string ksObjectFile, const std::string ksTextureFile, const glm::vec3 kPosition, const float kfRotation);
 
 	/////////////////////////////////////////////////
 	///
