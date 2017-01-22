@@ -34,6 +34,18 @@
     <Filter Include="Header Files\Scene\Model">
       <UniqueIdentifier>{d27d72eb-6548-4b83-844a-766cde9b7947}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\FileLoading">
+      <UniqueIdentifier>{0f4f71c3-8e57-494a-be21-f97f3b1a6acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene\Object">
+      <UniqueIdentifier>{e859b9cf-0caf-4d8f-8146-416b13a63d6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Object">
+      <UniqueIdentifier>{cca73be9-c629-4bf5-83b9-3f2a66a1e887}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FileLoading">
+      <UniqueIdentifier>{ca54077c-e7ea-4900-b125-49c21ed302cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -54,6 +66,33 @@
     <ClCompile Include="src\robot.cpp">
       <Filter>Source Files\Scene\Player</Filter>
     </ClCompile>
+    <ClCompile Include="src\collectable.cpp">
+      <Filter>Source Files\Scene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameobject.cpp">
+      <Filter>Source Files\Scene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\staticobject.cpp">
+      <Filter>Source Files\Scene\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\light.cpp">
+      <Filter>Source Files\Scene\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\texture.cpp">
+      <Filter>Source Files\Scene\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\loader.cpp">
+      <Filter>Source Files\FileLoading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imageloader.cpp">
+      <Filter>Source Files\FileLoading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\objectloader.cpp">
+      <Filter>Source Files\FileLoading</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xmlloader.cpp">
+      <Filter>Source Files\FileLoading</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\scene.h">
@@ -70,6 +109,33 @@
     </ClInclude>
     <ClInclude Include="include\robot.h">
       <Filter>Header Files\Scene\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="include\light.h">
+      <Filter>Header Files\Scene\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\loader.h">
+      <Filter>Header Files\FileLoading</Filter>
+    </ClInclude>
+    <ClInclude Include="include\texture.h">
+      <Filter>Header Files\Scene\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gameobject.h">
+      <Filter>Header Files\Scene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="include\collectable.h">
+      <Filter>Header Files\Scene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="include\staticobject.h">
+      <Filter>Header Files\Scene\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="include\imageloader.h">
+      <Filter>Header Files\FileLoading</Filter>
+    </ClInclude>
+    <ClInclude Include="include\objectloader.h">
+      <Filter>Header Files\FileLoading</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xmlloader.h">
+      <Filter>Header Files\FileLoading</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
