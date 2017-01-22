@@ -1,64 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{75fa1743-f3c5-4507-a575-cbbbda6aef68}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{7f066c0c-b054-4b03-b6bc-12c23d94f60c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{ecefd71d-7dad-425a-8254-8317b1e3e1a5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\System">
-      <UniqueIdentifier>{05cd3624-59c4-44ad-9559-98a1f880dd1d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\System">
-      <UniqueIdentifier>{96dba168-1fe9-49e9-a415-0f55fce78102}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Scene">
-      <UniqueIdentifier>{f031343c-010b-41b1-8997-a35d26732575}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Scene">
-      <UniqueIdentifier>{53750c76-ea29-4b49-9978-119622618ea1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Scene\Player">
-      <UniqueIdentifier>{53fe99af-ccbc-4461-b8df-470c6b5323ac}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Scene\Player">
-      <UniqueIdentifier>{27f0d472-6309-49a0-88a8-aed603c84253}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Scene\Model">
-      <UniqueIdentifier>{52efd0b2-8d9d-4ea9-b526-aa4260594ba4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Scene\Model">
-      <UniqueIdentifier>{d27d72eb-6548-4b83-844a-766cde9b7947}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\FileLoading">
-      <UniqueIdentifier>{0f4f71c3-8e57-494a-be21-f97f3b1a6acd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Scene\Object">
-      <UniqueIdentifier>{e859b9cf-0caf-4d8f-8146-416b13a63d6a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Scene\Object">
-      <UniqueIdentifier>{cca73be9-c629-4bf5-83b9-3f2a66a1e887}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\FileLoading">
-      <UniqueIdentifier>{ca54077c-e7ea-4900-b125-49c21ed302cc}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="src\main.cpp">
-      <Filter>Source Files\System</Filter>
+      <Filter>Source Files\Systems</Filter>
     </ClCompile>
     <ClCompile Include="src\camera.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="src\scene.cpp">
+    <ClCompile Include="src\collectable.cpp">
+      <Filter>Source Files\Scene\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\light.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\model.cpp">
       <Filter>Source Files\Scene\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\modelloader.cpp">
+      <Filter>Source Files\Loaders</Filter>
     </ClCompile>
     <ClCompile Include="src\player.cpp">
       <Filter>Source Files\Scene\Player</Filter>
@@ -66,41 +25,37 @@
     <ClCompile Include="src\robot.cpp">
       <Filter>Source Files\Scene\Player</Filter>
     </ClCompile>
-    <ClCompile Include="src\collectable.cpp">
-      <Filter>Source Files\Scene\Object</Filter>
+    <ClCompile Include="src\scene.cpp">
+      <Filter>Source Files\Scene</Filter>
     </ClCompile>
     <ClCompile Include="src\staticobject.cpp">
-      <Filter>Source Files\Scene\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="src\light.cpp">
-      <Filter>Source Files\Scene\Model</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="src\xmlloader.cpp">
-=======
-    <ClCompile Include="src\texture.cpp">
-      <Filter>Source Files\Scene\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="src\imageloader.cpp">
->>>>>>> master
-      <Filter>Source Files\FileLoading</Filter>
+      <Filter>Source Files\Scene\Objects</Filter>
     </ClCompile>
     <ClCompile Include="src\textureloader.cpp">
-      <Filter>Source Files\FileLoading</Filter>
+      <Filter>Source Files\Loaders</Filter>
     </ClCompile>
-    <ClCompile Include="src\modelloader.cpp">
-      <Filter>Source Files\FileLoading</Filter>
+    <ClCompile Include="src\xmlloader.cpp">
+      <Filter>Source Files\Loaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\scene.h">
+    <ClInclude Include="include\camera.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="include\camera.h">
+    <ClInclude Include="include\collectable.h">
+      <Filter>Header Files\Scene\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\gameobject.h">
+      <Filter>Header Files\Scene\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\light.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
     <ClInclude Include="include\model.h">
       <Filter>Header Files\Scene\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="include\modelloader.h">
+      <Filter>Header Files\Loaders</Filter>
     </ClInclude>
     <ClInclude Include="include\player.h">
       <Filter>Header Files\Scene\Player</Filter>
@@ -108,26 +63,64 @@
     <ClInclude Include="include\robot.h">
       <Filter>Header Files\Scene\Player</Filter>
     </ClInclude>
-    <ClInclude Include="include\light.h">
-      <Filter>Header Files\Scene\Model</Filter>
-    </ClInclude>
-    <ClInclude Include="include\gameobject.h">
-      <Filter>Header Files\Scene\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="include\collectable.h">
-      <Filter>Header Files\Scene\Object</Filter>
+    <ClInclude Include="include\scene.h">
+      <Filter>Header Files\Scene</Filter>
     </ClInclude>
     <ClInclude Include="include\staticobject.h">
-      <Filter>Header Files\Scene\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="include\xmlloader.h">
-      <Filter>Header Files\FileLoading</Filter>
+      <Filter>Header Files\Scene\Objects</Filter>
     </ClInclude>
     <ClInclude Include="include\textureloader.h">
-      <Filter>Header Files\FileLoading</Filter>
+      <Filter>Header Files\Loaders</Filter>
     </ClInclude>
-    <ClInclude Include="include\modelloader.h">
-      <Filter>Header Files\FileLoading</Filter>
+    <ClInclude Include="include\xmlloader.h">
+      <Filter>Header Files\Loaders</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{0b1b9eef-ec43-4156-9102-6b638267d1aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{4d5642a2-d521-44eb-bba4-de21baf76240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6980f5a7-efe5-4340-ac2d-cff62e7173fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systems">
+      <UniqueIdentifier>{81c3f9d7-6598-4843-9c2c-894188332dfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Systems">
+      <UniqueIdentifier>{36166ec5-24f1-4640-9f37-a436fd025d20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Loaders">
+      <UniqueIdentifier>{f18b6eab-04dd-4ef6-9e1a-caef1299ab96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Loaders">
+      <UniqueIdentifier>{a86fa461-5f5e-475c-aa26-22935085a68d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{29400c31-0410-4578-ac26-e155b40304ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene">
+      <UniqueIdentifier>{8124face-9eb2-4dad-aa8d-a0146a46c3d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene\Model">
+      <UniqueIdentifier>{3b78ec0f-3709-4be7-9cac-95a75dab21fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Model">
+      <UniqueIdentifier>{48bc402f-f709-463c-9e80-35e1a5b86546}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Player">
+      <UniqueIdentifier>{70587959-c8ea-402f-90ed-f6b9a1e34186}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene\Player">
+      <UniqueIdentifier>{1422bdae-e733-4962-82c3-2cfe8d551fa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene\Objects">
+      <UniqueIdentifier>{914a142b-bfee-4f19-9b55-06d910f0baa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\Objects">
+      <UniqueIdentifier>{00309a25-aa3a-4000-bcd2-4ad6cafb7352}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

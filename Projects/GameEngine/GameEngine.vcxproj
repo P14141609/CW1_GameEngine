@@ -64,11 +64,6 @@
   <ItemGroup>
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\collectable.cpp" />
-<<<<<<< HEAD
-    <ClCompile Include="src\gameobject.cpp" />
-=======
-    <ClCompile Include="src\imageloader.cpp" />
->>>>>>> master
     <ClCompile Include="src\light.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\model.cpp" />
