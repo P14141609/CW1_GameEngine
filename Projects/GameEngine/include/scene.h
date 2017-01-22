@@ -5,6 +5,8 @@
 #include "player.h"
 #include "camera.h"
 #include "gameobject.h"
+#include "collectable.h"
+#include "staticobject.h"
 #include "light.h"
 
 #include <memory>

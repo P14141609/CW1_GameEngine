@@ -35,7 +35,15 @@ Scene::Scene(const float kfAspectRatio)
 	(
 		std::shared_ptr<GameObject>
 		(
-			new GameObject()
+			new Collectable()
+		)
+	);
+	// GameObject #2
+	m_pGameObjects.push_back
+	(
+		std::shared_ptr<GameObject>
+		(
+			new StaticObject()
 		)
 	);
 
@@ -65,6 +73,7 @@ void Scene::update(const float kfElapsedTime)
 // Void: Called to render the Scene
 void Scene::render()
 {
+	// Configures the view with activeCamera
 	gluLookAt
 	(
 		// Camera Position
@@ -81,7 +90,9 @@ void Scene::render()
 		m_pActiveCamera->getUp().z
 	);
 
+	// Renders the Player
 	m_player.render();
 
+	// Renders all GameObjects
 	for (std::shared_ptr<GameObject> pGameObject : m_pGameObjects) pGameObject->render();
 }
