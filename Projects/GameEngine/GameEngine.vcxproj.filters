@@ -69,9 +69,6 @@
     <ClCompile Include="src\collectable.cpp">
       <Filter>Source Files\Scene\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\gameobject.cpp">
-      <Filter>Source Files\Scene\Object</Filter>
-    </ClCompile>
     <ClCompile Include="src\staticobject.cpp">
       <Filter>Source Files\Scene\Object</Filter>
     </ClCompile>
@@ -80,9 +77,6 @@
     </ClCompile>
     <ClCompile Include="src\texture.cpp">
       <Filter>Source Files\Scene\Model</Filter>
-    </ClCompile>
-    <ClCompile Include="src\loader.cpp">
-      <Filter>Source Files\FileLoading</Filter>
     </ClCompile>
     <ClCompile Include="src\imageloader.cpp">
       <Filter>Source Files\FileLoading</Filter>

@@ -60,10 +60,8 @@
   <ItemGroup>
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\collectable.cpp" />
-    <ClCompile Include="src\gameobject.cpp" />
     <ClCompile Include="src\imageloader.cpp" />
     <ClCompile Include="src\light.cpp" />
-    <ClCompile Include="src\loader.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\model.cpp" />
     <ClCompile Include="src\objectloader.cpp" />

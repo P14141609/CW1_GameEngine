@@ -10,3 +10,9 @@ Collectable::Collectable()
 {
 	// TODO
 }
+
+// Void: Called to render the Collectable
+void Collectable::render()
+{
+	// TODO
+}
