@@ -2,6 +2,12 @@
 #define XMLLOADER_H
 
 // Imports
+#include "player.h"
+#include "camera.h"
+#include "gameobject.h"
+#include "collectable.h"
+#include "staticobject.h"
+#include "light.h"
 #include <string>
 #include <vector>
 #include <iostream>
@@ -10,7 +16,10 @@
 
 struct XmlData //!< Holds xml data
 {
-	// TODO
+	std::shared_ptr<Player> player;
+	std::vector<std::shared_ptr<Camera>> cameras;
+	std::vector<std::shared_ptr<GameObject>> gameobjects;
+	std::vector<std::shared_ptr<Light>> lights;
 };
 
 /////////////////////////////////////////////////

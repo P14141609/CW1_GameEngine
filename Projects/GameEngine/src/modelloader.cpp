@@ -14,6 +14,7 @@ void ModelLoader::loadObj(const std::string ksObjectFile, ModelData &modelData)
 	{
 		std::cerr << "Model \"" << ksObjectFile << "\" not found.";
 		throw std::invalid_argument("File not found");
+		return;
 	}
 	else
 	{
@@ -102,7 +103,7 @@ void ModelLoader::loadObj(const std::string ksObjectFile, ModelData &modelData)
 
 					iss.ignore(1); // Read the slash
 
-								   // Read the normal index
+					// Read the normal index
 					iss >> uiN;
 					faceNormalIndices.push_back(uiN - 1);
 				}

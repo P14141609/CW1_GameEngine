@@ -8,6 +8,7 @@
 #include "collectable.h"
 #include "staticobject.h"
 #include "light.h"
+#include "xmlloader.h"
 
 #include <memory>
 #include <vector>
@@ -20,7 +21,7 @@
 class Scene
 {
 private:
-	Player m_player = Player(glm::vec3(0.0f, 0.0f, 0.0f), 0.0f); //!< Player member for character handling
+	std::shared_ptr<Player> m_pPlayer; //!< Player member for character handling
 
 	std::vector<std::shared_ptr<Camera>> m_pCameras; //!< Vector of Camera pointers for Cameras within the Scene
 	std::vector<std::shared_ptr<GameObject>> m_pGameObjects; //!< Vector of GameObject pointers for GameObjects within the Scene

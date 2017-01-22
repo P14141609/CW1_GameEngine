@@ -21,11 +21,13 @@ public:
 	///
 	/// \brief Constructor
 	///
+	/// \param ksObjectFile The file path to an object file
+	/// \param ksTextureFile The file path to an image file
 	/// \param kPosition Vector for Collectable position
 	/// \param kfRotation Float for Collectable rotation angle
 	///
 	///////////////////////////////////////////////// 
-	Collectable(const glm::vec3 kPosition, const float kfRotation);
+	Collectable(const std::string ksObjectFile, const std::string ksTextureFile, const glm::vec3 kPosition, const float kfRotation);
 
 	/////////////////////////////////////////////////
 	///

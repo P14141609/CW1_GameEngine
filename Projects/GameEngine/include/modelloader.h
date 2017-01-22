@@ -8,7 +8,7 @@
 #include <fstream>
 #include <sstream>
 
-struct ModelData //!< Holds vertex data for rendering a model
+struct ModelData //!< Holds vertex/normal/texture data for rendering a model
 {
 	std::vector<float> vertexTriplets;
 	std::vector<float> vertexNormalTriplets;

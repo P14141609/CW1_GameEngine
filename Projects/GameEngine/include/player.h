@@ -70,6 +70,8 @@ public:
 
 	void setPosition(const glm::vec3 kPosition) { m_position = kPosition; } //!< Sets a new Player position
 	void setRotation(const float kRotation) { m_fRotation = kRotation; } //!< Sets a new Player rotation
+	glm::vec3 getPosition() { return m_position; } //!< Gets the Player position
+	float getRotation() { return m_fRotation; } //!< Gets the Player rotation
 };
 
 #endif

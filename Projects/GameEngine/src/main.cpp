@@ -50,7 +50,7 @@ int main()
 	
 	// Enable Z-buffer read and write
 	glEnable(GL_DEPTH_TEST);
-	//glDepthFunc(GL_LEQUAL);
+	glDepthFunc(GL_LEQUAL);
 	glDepthMask(GL_TRUE);
 	
 	// Draw single sided faces
@@ -58,8 +58,8 @@ int main()
 	glCullFace(GL_BACK);
 	
 	// Setup a perspective projection
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
+	//glMatrixMode(GL_PROJECTION);
+	//glLoadIdentity();
 	
 	// Defines scene
 	Scene scene = Scene(ASPECT_RATIO);
@@ -71,6 +71,12 @@ int main()
 	sf::Clock clock;
 	// Declares var to track elapsed time
 	sf::Time elapsedTime;
+
+	// Set the active window before using OpenGL commands
+	// It's useless here because active window is always the same,
+	// but don't forget it if you use multiple windows or controls
+	window.setActive();
+	bool g_bWindowActive = true;
 
 	// While the window is open
 	while (window.isOpen())
@@ -110,6 +116,10 @@ int main()
 					pCamera->setAspectRatio(float(event.size.width / event.size.height));
 				}
 			}
+
+			// Focus event
+			if (event.type == sf::Event::GainedFocus) g_bWindowActive = true;
+			if (event.type == sf::Event::LostFocus)	  g_bWindowActive = false;
 		}
 	
 		// Gets elapsed time from clock
@@ -121,22 +131,26 @@ int main()
 			// Restarts the clock
 			clock.restart();
 	
-			// Updates the Scene with elapsed time
-			scene.update(elapsedTime.asSeconds());
+			// If Window is active
+			if (g_bWindowActive)
+			{
+				// Updates the Scene with elapsed time
+				scene.update(elapsedTime.asSeconds());
+			}
 		}
 		
 		// Clears window making it entirely black
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
-		window.pushGLStates();
-	
 		// Apply some transformations
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-		
+
 		// Draws the Scene
 		scene.render();
-	
+
+		window.pushGLStates();
+		//SFML STUFF HERE
 		window.resetGLStates();
 		window.popGLStates();
 	

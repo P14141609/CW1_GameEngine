@@ -85,10 +85,10 @@ void Player::update(const float kfElapsedTime)
 void Player::render()
 {
 	glEnable(GL_COLOR_MATERIAL);
-		glDisable(GL_CULL_FACE);
-		glCullFace(GL_BACK);
+		//glDisable(GL_CULL_FACE);
+		//glCullFace(GL_BACK);
 		m_pRobot->draw(m_position, m_fRotation);
-		glEnable(GL_CULL_FACE);
-		glCullFace(GL_BACK);
+		//glEnable(GL_CULL_FACE);
+		//glCullFace(GL_BACK);
 	glDisable(GL_COLOR_MATERIAL);
 }

@@ -26,6 +26,7 @@ Robot::Robot()
 void Robot::draw(const glm::vec3 kPosition, const float kfRotation)
 {
 	glPushMatrix();
+					
 		glTranslatef(kPosition.x, kPosition.y, kPosition.z);	// draw robot at desired coordinates
 		glRotatef(kfRotation, false, true, false);
 

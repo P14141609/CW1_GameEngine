@@ -38,10 +38,10 @@ public:
 	///
 	/// \param kPosition Position of the Camera
 	/// \param kDirection Direction of the Camera
-	/// \param kfAspectRatio
-	/// \param kfFOV
-	/// \param kfNear
-	/// \param kfFar
+	/// \param kfAspectRatio Display aspect ratio
+	/// \param kfFOV Display field of view 
+	/// \param kfNear Display near clipping distance
+	/// \param kfFar Display far clipping distance
 	///
 	///////////////////////////////////////////////// 
 	Camera(const glm::vec3 kPosition, const glm::vec3 kDirection, const float kfFOV, const float kfAspectRatio, const float kfNear, const float kfFar);
