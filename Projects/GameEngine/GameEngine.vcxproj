@@ -42,6 +42,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir)include\SFML-2.4.1\include;$(SolutionDir)include\glm\glm;$(SolutionDir)include;$(ProjectDir)include;</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)include\SFML-2.4.1\lib;</AdditionalLibraryDirectories>
@@ -51,6 +53,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <AdditionalIncludeDirectories>$(SolutionDir)include\SFML-2.4.1\include;$(SolutionDir)include\glm\glm;$(SolutionDir)include;$(ProjectDir)include;</AdditionalIncludeDirectories>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)include\SFML-2.4.1\lib;</AdditionalLibraryDirectories>
@@ -60,7 +64,11 @@
   <ItemGroup>
     <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\collectable.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="src\gameobject.cpp" />
+=======
+    <ClCompile Include="src\imageloader.cpp" />
+>>>>>>> master
     <ClCompile Include="src\light.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\model.cpp" />

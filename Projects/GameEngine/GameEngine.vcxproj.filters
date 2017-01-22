@@ -69,16 +69,20 @@
     <ClCompile Include="src\collectable.cpp">
       <Filter>Source Files\Scene\Object</Filter>
     </ClCompile>
-    <ClCompile Include="src\gameobject.cpp">
-      <Filter>Source Files\Scene\Object</Filter>
-    </ClCompile>
     <ClCompile Include="src\staticobject.cpp">
       <Filter>Source Files\Scene\Object</Filter>
     </ClCompile>
     <ClCompile Include="src\light.cpp">
       <Filter>Source Files\Scene\Model</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="src\xmlloader.cpp">
+=======
+    <ClCompile Include="src\texture.cpp">
+      <Filter>Source Files\Scene\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\imageloader.cpp">
+>>>>>>> master
       <Filter>Source Files\FileLoading</Filter>
     </ClCompile>
     <ClCompile Include="src\textureloader.cpp">

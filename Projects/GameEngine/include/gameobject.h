@@ -6,7 +6,7 @@
 
 /////////////////////////////////////////////////
 ///
-/// \brief Class for static object handling
+/// \brief Abstract base class for game object handling
 /// 
 /////////////////////////////////////////////////
 class GameObject
@@ -19,10 +19,10 @@ public:
 
 	/////////////////////////////////////////////////
 	///
-	/// \brief Constructor
+	/// \brief Called to render the GameObject
 	///
 	///////////////////////////////////////////////// 
-	GameObject();
+	virtual void render() = 0;
 };
 
 #endif

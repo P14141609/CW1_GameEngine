@@ -29,18 +29,30 @@ Scene::Scene(const float kfAspectRatio)
 	// Sets the active Camera to the first in the vector
 	m_pActiveCamera = m_pCameras.at(0);
 
-	// Pushes new Model pointer onto vector of Models
-	// Model #1
-	m_pModels.push_back
+	// Pushes new GameObject pointer onto vector of GameObjects
+	// GameObject #1
+	m_pGameObjects.push_back
 	(
-		std::shared_ptr<Model>
+		std::shared_ptr<GameObject>
 		(
+<<<<<<< HEAD
 			new Model("", "", glm::vec3(0.0f, 0.0f, 0.0f), 0.0f)
+=======
+			new Collectable()
+		)
+	);
+	// GameObject #2
+	m_pGameObjects.push_back
+	(
+		std::shared_ptr<GameObject>
+		(
+			new StaticObject()
+>>>>>>> master
 		)
 	);
 
 	// Sets display perspective setting
-	gluPerspective(getActiveCamera()->getFOV(), getActiveCamera()->getAspectRatio(), getActiveCamera()->getNear(), getActiveCamera()->getFar());
+	gluPerspective(m_pActiveCamera->getFOV(), m_pActiveCamera->getAspectRatio(), m_pActiveCamera->getNear(), m_pActiveCamera->getFar());
 }
 
 // Void: Processes input
@@ -65,6 +77,7 @@ void Scene::update(const float kfElapsedTime)
 // Void: Called to render the Scene
 void Scene::render()
 {
+	// Configures the view with activeCamera
 	gluLookAt
 	(
 		// Camera Position
@@ -81,7 +94,9 @@ void Scene::render()
 		m_pActiveCamera->getUp().z
 	);
 
+	// Renders the Player
 	m_player.render();
 
-	for (std::shared_ptr<Model> model : m_pModels) model->render();
+	// Renders all GameObjects
+	for (std::shared_ptr<GameObject> pGameObject : m_pGameObjects) pGameObject->render();
 }
