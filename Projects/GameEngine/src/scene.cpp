@@ -35,7 +35,7 @@ Scene::Scene(const float kfAspectRatio)
 	(
 		std::shared_ptr<Model>
 		(
-			new Model()
+			new Model("", "", glm::vec3(0.0f, 0.0f, 0.0f), 0.0f)
 		)
 	);
 

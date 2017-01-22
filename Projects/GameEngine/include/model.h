@@ -3,6 +3,8 @@
 
 // Imports
 #include "camera.h"
+#include "modelloader.h"
+#include "textureloader.h"
 
 #include <SFML\glew.h>		
 #include <SFML\OpenGL.hpp>
@@ -10,6 +12,7 @@
 #include <SFML\wglext.h>
 #include <SFML\glext.h>
 
+#include <string>
 #include <memory>
 #include <vector>
 #include "glm.hpp"
@@ -23,11 +26,15 @@
 class Model
 {
 private:
+
+	std::string m_sObjectFile; //!< Holds the object file path
+
 	glm::vec3 m_position; //!< Model position vector
 	float m_fRotation; //!< Model rotation angle
 
-	//Texture* m_pTexture;
-	
+	ModelData m_modelData; //!< Stores Model data for rendering
+	GLuint m_textureID; //!< Model Texture handle
+
 protected:
 
 public:
