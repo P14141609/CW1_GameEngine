@@ -12,14 +12,12 @@
 /////////////////////////////////////////////////
 class GameObject
 {
-private:
-
 protected:
 
-	glm::vec3 m_position; //!< GameObject position vector
-	float m_rotation; //!< GameObject rotation angle
+	glm::vec3 m_position; //!< Position vector
+	float m_rotation; //!< Rotation angle
 
-	std::shared_ptr<Model> m_pModel; //!< The GameObject's Model for rendering
+	std::shared_ptr<Model> m_pModel; //!< Model for rendering
 
 public:
 

@@ -67,11 +67,11 @@ public:
 	///////////////////////////////////////////////// 
 	void draw(const glm::vec3 kPosition, const float kfRotation);
 
-	void drawCube(const glm::vec3 kPosition); //!< 
-	void drawArm(const glm::vec3 kPosition); //!< 
-	void drawHead(const glm::vec3 kPosition); //!< 
-	void drawTorso(const glm::vec3 kPosition); //!< 
-	void drawLeg(const glm::vec3 kPosition); //!< 
-	void drawFoot(const glm::vec3 kPosition); //!< 
+	void drawCube(const glm::vec3 kPosition); //!< Called to render a unit cube
+	void drawArm(const glm::vec3 kPosition); //!< Called to render the Robot's arm
+	void drawHead(const glm::vec3 kPosition); //!< Called to render the Robot's head
+	void drawTorso(const glm::vec3 kPosition); //!< Called to render the Robot's torso
+	void drawLeg(const glm::vec3 kPosition); //!< Called to render the Robot's lef
+	void drawFoot(const glm::vec3 kPosition); //!< Called to render the Robot's foot
 };
 #endif

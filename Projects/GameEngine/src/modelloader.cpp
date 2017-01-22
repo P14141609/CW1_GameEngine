@@ -5,7 +5,7 @@
 // Imports
 #include "modelloader.h"
 
-// Constructor
+// Void: Loads a .obj and binds the data to the referenced input variable
 void ModelLoader::loadObj(const std::string ksObjectFile, ModelData &modelData)
 {
 	std::fstream modelfile(ksObjectFile, std::ios_base::in);

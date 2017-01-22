@@ -17,7 +17,6 @@
 #include <vector>
 #include "glm.hpp"
 
-
 /////////////////////////////////////////////////
 ///
 /// \brief Class for model handling
@@ -27,7 +26,7 @@ class Model
 {
 private:
 
-	std::string m_sObjectFile; //!< Holds the object file path
+	std::string m_sObjectFile; //!< Holds the obj file path
 
 	ModelData m_modelData; //!< Stores Model data for rendering
 	GLuint m_textureID; //!< Model Texture handle

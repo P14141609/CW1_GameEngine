@@ -14,7 +14,7 @@ class Light
 {
 private:
 
-	glm::vec3 m_position; //!< Light position vector
+	glm::vec3 m_position; //!< Position vector
 
 protected:
 

@@ -8,7 +8,7 @@
 #include <fstream>
 #include <sstream>
 
-struct ModelData 
+struct ModelData //!< Holds vertex data for rendering a model
 {
 	std::vector<float> vertexTriplets;
 	std::vector<float> vertexNormalTriplets;
@@ -17,20 +17,16 @@ struct ModelData
 
 /////////////////////////////////////////////////
 ///
-/// \brief Class for Model file loading
+/// \brief Class for .obj file loading
 /// 
 /////////////////////////////////////////////////
 class ModelLoader
 {
-private:
-
-protected:
-
 public:
 
 	/////////////////////////////////////////////////
 	///
-	/// \brief Loads a .obj and binds the data to the input variable
+	/// \brief Loads a .obj and binds the data to the referenced input variable
 	///
 	/// \param ksObjectFile The file path to an object file
 	/// \param modelData A modelData object pointer

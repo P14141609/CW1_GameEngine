@@ -6,7 +6,7 @@
 
 /////////////////////////////////////////////////
 ///
-/// \brief Class for Collectable object handling
+/// \brief Class for collectable object handling
 /// 
 /////////////////////////////////////////////////
 class Collectable : public GameObject

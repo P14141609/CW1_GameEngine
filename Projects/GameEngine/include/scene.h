@@ -36,7 +36,7 @@ public:
 	///
 	/// \brief Constructor
 	///
-	/// \param kfAspectRatio The window aspect ratio
+	/// \param kfAspectRatio The display aspect ratio
 	///
 	///////////////////////////////////////////////// 
 	Scene(const float kfAspectRatio);

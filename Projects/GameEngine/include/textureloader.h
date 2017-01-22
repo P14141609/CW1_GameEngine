@@ -15,20 +15,16 @@
 
 /////////////////////////////////////////////////
 ///
-/// \brief Class for texture file loading
+/// \brief Class for image file loading
 /// 
 /////////////////////////////////////////////////
 class TextureLoader
 {
-private:
-
-protected:
-
 public:
 
 	/////////////////////////////////////////////////
 	///
-	/// \brief Loads a bitmap and binds it to a texture handle
+	/// \brief Loads a bitmap and binds it to the referenced texture handle
 	///
 	/// \param ksTextureFile The file path to an image file
 	/// \param texture A texture handle pointer

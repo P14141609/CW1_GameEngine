@@ -14,10 +14,10 @@
 class Player
 {
 private:
-	std::shared_ptr<Robot> m_pRobot; //!< The Robot player character
+	std::shared_ptr<Robot> m_pRobot; //!< The Player's Robot character
 
-	glm::vec3 m_position; //!< Player position vector
-	float m_rotation; //!< Player rotation angle
+	glm::vec3 m_position; //!< Position vector
+	float m_rotation; //!< Rotation angle
 
 protected:
 
@@ -68,8 +68,8 @@ public:
 	///////////////////////////////////////////////// 
 	void render();
 
-	void setPosition(const glm::vec3 kPosition) { m_position = kPosition; } //!< 
-	void setRotation(const float kRotation) { m_rotation = kRotation; } //!< 
+	void setPosition(const glm::vec3 kPosition) { m_position = kPosition; } //!< Sets a new Player position
+	void setRotation(const float kRotation) { m_rotation = kRotation; } //!< Sets a new Player rotation
 };
 
 #endif
