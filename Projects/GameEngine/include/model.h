@@ -36,37 +36,13 @@ public:
 	///
 	/// \brief Constructor
 	///
-	///////////////////////////////////////////////// 
-	Model();
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Loads an obj file into the class
-	///
-	/// \param ksFilePath The file path to a specified .obj file
+	/// \param ksObjectFile The file path to an object file
+	/// \param ksTextureFile The file path to an image file
+	/// \param kPosition Vector for Model position
+	/// \param kfRotation Float for Model rotation angle
 	///
 	///////////////////////////////////////////////// 
-	void loadFromObj(const std::string ksFilePath);
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Initialises Model handles
-	///
-	/// \param kfPositionData
-	/// \param kfUVData
-	/// \param kIndexData
-	///
-	///////////////////////////////////////////////// 
-	void initModel();
-
-	/////////////////////////////////////////////////
-	///
-	/// \brief Initialises the Model texture
-	///
-	/// \param ksFilePath The file path to a specified texture file
-	///
-	///////////////////////////////////////////////// 
-	void initTexture(const std::string ksFilePath);
+	Model(const std::string ksObjectFile, const std::string ksTextureFile, const glm::vec3 kPosition, const float kfRotation);
 
 	/////////////////////////////////////////////////
 	///
