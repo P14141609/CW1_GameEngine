@@ -2,7 +2,8 @@
 #define LIGHT_H
 
 // Imports
-//
+#include <SFML\OpenGL.hpp>
+#include "glm.hpp"
 
 /////////////////////////////////////////////////
 ///
@@ -13,6 +14,8 @@ class Light
 {
 private:
 
+	glm::vec3 m_position; //!< Light position vector
+
 protected:
 
 public:
@@ -21,8 +24,17 @@ public:
 	///
 	/// \brief Constructor
 	///
+	/// \param kPosition Vector for Light position
+	///
 	///////////////////////////////////////////////// 
-	Light();
+	Light(const glm::vec3 kPosition);
+
+	/////////////////////////////////////////////////
+	///
+	/// \brief Configures OpenGL for rendering
+	///
+	///////////////////////////////////////////////// 
+	void configureGL();
 };
 
 #endif
